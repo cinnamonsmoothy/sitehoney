@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 420 110" role="img" aria-labelledby="title desc">
+<title id="title">SiteHoney</title>
+<desc id="desc">The SiteHoney bee mark in its original colours with a white wordmark.</desc>
+<style>@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700&amp;display=swap');.wordmark{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:52px;letter-spacing:-1.1px;fill:#FFFFFF}</style>
+<defs>
+<rect id="capsule-left" x="20" y="33" width="60" height="44" rx="22" transform="rotate(-45 50 55)"/>
+<rect id="capsule-right" x="32" y="33" width="60" height="44" rx="22" transform="rotate(45 62 55)"/>
+<clipPath id="clip-left"><use href="#capsule-left"/></clipPath>
+</defs>
+<g fill="#FFFFFF"><use href="#capsule-left"/><use href="#capsule-right"/></g>
+<use href="#capsule-right" fill="#FFCA28" clip-path="url(#clip-left)"/>
+<g fill="none" stroke="#171717" stroke-width="5"><use href="#capsule-left"/><use href="#capsule-right"/></g>
+<text class="wordmark" x="105" y="69">sitehoney</text>
+</svg>
