@@ -380,7 +380,7 @@ footer{background:var(--ink)}
 @media(prefers-reduced-motion:reduce){.journey-overlay{display:none}}
 
 /* SiteHoney v-next: one fluid honey lip, no circle around 24 hours. */
-.hero{margin-bottom:155px}
+.hero{margin-bottom:180px}
 .hero::before{bottom:64px}
 .hero-honey-drip{height:215px;bottom:-125px;z-index:5}
 .hero .hero-headline-hours{padding:0;margin:0;isolation:auto}
@@ -407,7 +407,7 @@ footer{background:var(--ink)}
 .timeline-flyer svg{display:block;width:100%;height:100%;overflow:visible}
 .timeline-flyer .bee-wing{animation-duration:.073s}
 @media(max-width:1000px){.process-container{width:calc(100% - 72px);gap:48px}.process-heading h2{font-size:clamp(38px,5vw,50px)}.process-timeline{padding-left:94px;min-height:690px}.timeline-line{left:128px}.process-step,.process-step:last-child{min-height:205px;gap:22px}.process-number{width:66px;height:66px;border-radius:20px;font-size:21px}.process-step h3{font-size:clamp(20px,2.4vw,24px)}.process-step p{font-size:15px}}
-@media(max-width:800px){.hero{margin-bottom:132px}.hero-honey-drip{height:196px;bottom:-120px}.hero::before{bottom:72px}
+@media(max-width:800px){.hero{margin-bottom:160px}.hero-honey-drip{height:196px;bottom:-120px}.hero::before{bottom:72px}
  .process-section{height:255svh;min-height:1500px}.process-stick{min-height:0;height:100svh}
  .process-container{width:calc(100% - 54px);grid-template-columns:1fr;gap:28px;align-items:start}
  .process-heading h2{font-size:clamp(34px,7vw,48px);max-width:650px;line-height:1.2}.process-heading p{font-size:14px;margin-top:10px;max-width:600px}
@@ -418,7 +418,7 @@ footer{background:var(--ink)}
  .process-step h3{font-size:clamp(18px,4.2vw,22px);margin-bottom:6px}.process-step p{font-size:clamp(13px,3vw,15px);line-height:1.72}
  .timeline-flyer{width:35px;height:30px}
 }
-@media(max-width:420px){.hero-honey-drip{height:164px;bottom:-92px}.hero{margin-bottom:112px}
+@media(max-width:420px){.hero-honey-drip{height:164px;bottom:-92px}.hero{margin-bottom:138px}
  .process-container{width:calc(100% - 32px);gap:14px}
  .process-heading h2{font-size:31px}.process-heading p{font-size:13px}
  .process-timeline{padding-left:60px;min-height:min(71svh,640px)}
@@ -635,11 +635,19 @@ footer{background:var(--ink)}
    top rim and the same organic, downward drip language as the hero. */
 .pricing{
   position:relative;isolation:isolate;overflow:visible!important;
-  margin:0 0 133px;
+  margin:0 0 170px;
   padding-top:135px;
   padding-bottom:151px;
 }
 .pricing .price-layout{position:relative;z-index:2}
+.pricing .price-layout h2{
+  font-size:clamp(76px,8.2vw,136px);
+  line-height:.98;
+  letter-spacing:-.065em;
+  font-weight:800;
+  overflow-wrap:normal;
+  margin-bottom:32px;
+}
 .pricing-honey-top{
   position:absolute;left:0;top:-78px;
   width:100%;height:84px;display:block;
@@ -652,13 +660,15 @@ footer{background:var(--ink)}
 }
 .pricing-honey-mobile{display:none}
 @media(max-width:800px){
-  .pricing{padding-top:100px;padding-bottom:119px;margin-bottom:102px}
+  .pricing{padding-top:100px;padding-bottom:119px;margin-bottom:140px}
+  .pricing .price-layout h2{font-size:clamp(64px,12vw,96px);line-height:1;margin-bottom:26px}
   .pricing-honey-top{top:-56px;height:62px}
   .pricing-honey-desktop{display:none}
   .pricing-honey-mobile{display:block;height:170px;bottom:-130px}
 }
 @media(max-width:420px){
-  .pricing{padding-top:87px;padding-bottom:110px;margin-bottom:91px}
+  .pricing{padding-top:87px;padding-bottom:110px;margin-bottom:128px}
+  .pricing .price-layout h2{font-size:clamp(58px,16vw,68px)}
   .pricing-honey-top{top:-48px;height:54px}
   .pricing-honey-mobile{height:150px;bottom:-117px}
 }
@@ -673,13 +683,12 @@ footer{background:var(--ink)}
 /* SVG's flat-to-drip seam sits exactly at hero bottom; it is no longer buried by the yellow panel. */
 .hero-honey-drip:not(.hero-honey-drip--mobile){bottom:-162px}
 /* Gentle marker pills with no redundant status text. */
-.process-time{gap:0;padding:8px 16px 9px;margin-bottom:11px}
+.process-time{gap:0;padding:8px 16px 9px;margin-bottom:11px;border:2px solid var(--ink)}
 .process-time strong{font-size:16px;font-weight:800;letter-spacing:-.03em;text-transform:none}
-/* Distinct black outlined number tiles, without an outer halo. */
-.process-number{border:2px solid var(--ink)!important;box-shadow:none!important}
-.process-step.is-passed .process-number{box-shadow:none!important}
-/* Icons get an intentional, simple black keyline. */
-#included .feature .symbol{border:1.75px solid var(--ink)}
+/* High-contrast outlined tiles with a crisp, solid offset shadow. */
+.process-number{border:2px solid var(--ink)!important;box-shadow:5px 5px 0 var(--ink)!important}
+.process-step.is-passed .process-number{box-shadow:5px 5px 0 var(--ink)!important}
+#included .feature .symbol{border:1.75px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
 #included .feature .symbol svg{display:block;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 /* Dedicated footer with a floating final CTA exactly across the section boundary. */
 .site-footer{position:relative;background:var(--ink);color:var(--cream);margin-top:170px;padding:0 0 30px;overflow:visible}
@@ -742,6 +751,8 @@ footer{background:var(--ink)}
 .process-liquid-edge{position:absolute;left:0;width:100%;height:94px;display:block;pointer-events:none;z-index:3}
 .process-liquid-top{top:-1px}
 .process-liquid-bottom{bottom:-1px}
+/* The ink contour is drawn above each liquid fill, directly on its curved edge. */
+.honey-contour{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
 @media(max-width:800px){.process-liquid-edge{height:65px}}
 @media(max-width:420px){.process-liquid-edge{height:52px}}
 
@@ -959,6 +970,73 @@ footer{background:var(--ink)}
   .hero-inner{padding-top:102px;padding-bottom:58px}
   .hive-stage{max-height:62svh}
 }
+/* Let the phone headline fill its column while leaving room for the CTA and site preview. */
+@media(max-width:800px){
+  .hero h1{font-size:clamp(58px,18vw,88px);margin-bottom:14px}
+  .hero-inner{gap:18px}
+}
+@media(max-width:420px){
+  .hero-inner{padding-top:90px;padding-bottom:58px}
+}
+/* Oversized timeline promise with a rounded, neo-brutalist deadline badge. */
+.process-container{width:min(1500px,calc(100% - 72px));gap:clamp(38px,4vw,76px)}
+.process-timeline{min-height:min(90svh,900px)}
+.process-step,.process-step:last-child{grid-template-columns:88px minmax(0,1fr);gap:22px;min-height:clamp(170px,21svh,215px)}
+.process-number{width:84px;height:84px;border-radius:24px;font-size:29px}
+.process-step h3{font-size:clamp(27px,2.15vw,36px)}
+.process-step p{font-size:clamp(15px,1.15vw,18px)}
+.process-heading h2{
+  width:max-content;
+  max-width:100%;
+  font-size:clamp(42px,4.1vw,70px);
+  line-height:1.02;
+  letter-spacing:-.06em;
+  font-weight:800;
+}
+.process-first-line{display:block;font-size:1em;letter-spacing:inherit;white-space:normal}
+.process-website-line{display:block;font-size:1em;white-space:nowrap}
+.process-second-line{white-space:normal}
+.process-duration{
+  display:block;
+  width:100%;
+  text-align:center;
+  font-size:1.4em;
+  padding:.035em .08em .11em;
+  background:var(--yellow);
+  border:3px solid var(--ink);
+  border-radius:.23em;
+  box-shadow:6px 6px 0 var(--ink);
+  line-height:1;
+  margin:.16em 0 0;
+}
+.process-duration::before,.process-duration::after{display:none!important}
+@media(max-width:1500px) and (min-width:801px){
+  .process-container{width:min(1320px,84vw)}
+  .process-heading h2{font-size:clamp(39px,3.9vw,62px)}
+}
+@media(max-width:800px){
+  .process-container{width:calc(100% - 34px);gap:27px}
+  .process-heading h2{font-size:clamp(36px,9vw,54px);margin-left:auto;margin-right:auto}
+  .process-timeline{min-height:min(78svh,790px)}
+  .process-step,.process-step:last-child{grid-template-columns:68px minmax(0,1fr);gap:17px;min-height:clamp(145px,18.5svh,195px)}
+  .process-number{width:64px;height:64px;font-size:24px}
+  .process-step h3{font-size:clamp(21px,4.3vw,29px)}
+  .process-step p{font-size:clamp(13px,2.6vw,17px)}
+  .process-duration{border-width:2.5px;box-shadow:5px 5px 0 var(--ink)}
+}
+@media(max-width:420px){
+  .process-container{width:calc(100% - 26px)}
+  .process-heading h2{font-size:clamp(35px,11vw,45px)}
+  .process-step,.process-step:last-child{grid-template-columns:58px minmax(0,1fr);gap:13px;min-height:clamp(128px,17svh,165px)}
+  .process-number{width:55px;height:55px;font-size:21px}
+  .process-step h3{font-size:clamp(19px,5.1vw,23px)}
+  .process-step p{font-size:13px}
+  .process-duration{box-shadow:4px 4px 0 var(--ink)}
+}
+/* Balance the space around the content grid and give the intro copy a little more room below. */
+#included{padding-top:clamp(80px,7vw,115px);padding-bottom:clamp(155px,13vw,220px)}
+#first-impression .intro p{margin-bottom:22px}
+@media(max-width:800px){#included{padding-top:78px;padding-bottom:135px}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
 <symbol id="bee" viewBox="0 0 96 78">
@@ -993,81 +1071,110 @@ footer{background:var(--ink)}
       <div class="finished-mark" id="finished-mark" aria-hidden="true"><span><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9"/></svg></span> <span class="finished-text">Website ready!</span></div>
     </div>
   </div>
-  <!-- Flat yellow honey edge with fewer, chunkier, more organic downward drips. -->
-  <svg class="hero-honey-drip" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path fill="#ffd23f" d="M0 0 H1440 V54
-      C 1417 53, 1394 56, 1371 54
-      C 1351 52, 1336 49, 1325 53
-      C 1315 57, 1311 65, 1312 75
-      C 1314 88, 1311 99, 1301 99
-      C 1290 99, 1287 88, 1288 75
-      C 1290 64, 1286 56, 1275 53
-      C 1255 47, 1230 57, 1213 67
-      C 1198 76, 1197 93, 1199 116
-      C 1202 148, 1192 175, 1168 175
-      C 1144 175, 1136 148, 1139 116
-      C 1142 87, 1136 68, 1121 61
-      C 1108 55, 1091 54, 1075 58
-      C 1062 61, 1056 70, 1057 81
-      C 1059 95, 1056 105, 1047 105
-      C 1038 105, 1035 95, 1036 81
-      C 1037 69, 1033 60, 1022 57
-      C 1000 50, 974 58, 949 55
-      C 924 52, 899 48, 874 54
-      C 858 58, 851 72, 853 90
-      C 856 114, 848 134, 829 134
-      C 810 134, 801 114, 804 90
-      C 806 71, 800 59, 788 56
-      C 770 51, 746 56, 720 58
-      C 694 61, 668 63, 643 58
-      C 625 54, 618 64, 620 77
-      C 622 92, 619 102, 610 102
-      C 601 102, 598 92, 599 77
-      C 601 64, 596 55, 585 51
-      C 566 45, 549 49, 537 61
-      C 523 74, 520 92, 523 115
-      C 526 146, 517 172, 494 172
-      C 472 172, 464 146, 467 115
-      C 470 89, 464 71, 451 63
-      C 438 55, 420 54, 403 61
-      C 388 67, 381 79, 383 94
-      C 385 111, 381 123, 370 123
-      C 359 123, 355 111, 357 94
-      C 358 80, 354 69, 344 64
-      C 329 56, 308 58, 286 58
-      C 264 58, 246 53, 230 51
-      C 214 49, 198 52, 188 61
-      C 179 70, 177 83, 179 98
-      C 181 115, 175 127, 163 127
-      C 151 127, 146 114, 149 98
-      C 151 84, 148 72, 138 66
-      C 126 58, 112 58, 96 61
-      C 77 65, 57 63, 38 57
-      C 26 53, 14 52, 0 54 Z"/>
+  <!-- Uneven honey silhouette inspired by the supplied reference. -->
+  <svg class="hero-honey-drip" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#ffd23f" d="M0 0 H1440 V83
+      C1434 87 1437 168 1425 174
+      C1411 183 1405 163 1407 139
+      C1409 111 1404 98 1392 96
+      C1379 94 1372 112 1363 107
+      C1351 100 1359 83 1345 82
+      C1328 79 1319 92 1318 109
+      C1316 133 1325 150 1307 153
+      C1291 154 1290 131 1293 113
+      C1297 91 1283 77 1264 83
+      C1250 88 1243 100 1230 94
+      C1214 86 1207 66 1192 76
+      C1174 88 1189 120 1173 125
+      C1158 129 1156 106 1159 88
+      C1162 68 1146 61 1130 73
+      C1113 85 1122 136 1115 168
+      C1110 193 1091 202 1077 192
+      C1058 177 1067 140 1064 112
+      C1062 87 1049 69 1034 70
+      C1020 71 1017 90 1005 91
+      C990 91 985 65 972 66
+      C951 68 956 102 940 105
+      C924 108 916 88 903 89
+      C886 90 882 130 883 158
+      C886 191 870 210 853 208
+      C834 206 835 177 838 146
+      C841 110 823 88 808 87
+      C791 85 792 120 777 122
+      C762 124 760 98 747 96
+      C727 92 720 110 722 133
+      C724 158 711 175 695 171
+      C678 166 680 140 684 120
+      C688 97 675 83 660 86
+      C645 89 640 106 627 103
+      C613 99 610 82 598 91
+      C584 102 592 163 582 184
+      C570 209 548 198 548 171
+      C549 146 556 111 540 98
+      C526 87 513 106 501 101
+      C486 95 493 66 479 61
+      C462 55 462 95 448 101
+      C432 108 428 84 416 83
+      C398 83 395 112 399 151
+      C403 187 392 218 372 219
+      C350 219 345 190 350 158
+      C357 114 345 84 328 82
+      C309 81 308 120 306 147
+      C305 166 299 185 287 184
+      C273 182 277 158 276 138
+      C275 105 266 88 250 92
+      C235 97 227 107 215 100
+      C199 90 190 87 179 103
+      C164 124 155 82 138 80
+      C119 78 110 107 112 135
+      C115 166 103 184 88 180
+      C71 177 72 148 76 126
+      C80 101 66 89 52 99
+      C37 111 30 91 18 94
+      C5 98 8 155 7 180
+      C6 195 3 200 0 198 Z"/>
   </svg>
-  <svg class="hero-honey-drip hero-honey-drip--mobile" viewBox="0 0 390 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path fill="#ffd23f" d="M0 0 H390 V52
-      C 374 51, 360 54, 348 52
-      C 337 50, 329 49, 320 52
-      C 312 55, 308 63, 309 73
-      C 311 85, 308 95, 299 95
-      C 290 95, 287 85, 289 73
-      C 290 64, 287 57, 278 54
-      C 261 48, 244 57, 230 66
-      C 219 74, 217 88, 220 108
-      C 222 133, 215 155, 198 155
-      C 181 155, 174 133, 177 108
-      C 179 85, 174 70, 162 63
-      C 150 56, 137 54, 124 58
-      C 114 61, 109 69, 110 79
-      C 111 91, 109 101, 101 101
-      C 93 101, 90 91, 91 79
-      C 93 69, 89 61, 80 58
-      C 64 52, 51 56, 43 67
-      C 35 77, 33 89, 35 102
-      C 37 120, 33 134, 23 134
-      C 13 134, 9 120, 11 102
-      C 13 88, 10 77, 0 52 Z"/>
+  <svg class="hero-honey-drip hero-honey-drip--mobile" viewBox="115 0 390 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#ffd23f" d="M0 0 H740 V78
+      C735 90 737 170 726 177
+      C714 185 708 165 708 139
+      C708 117 706 105 696 99
+      C685 93 678 112 669 107
+      C660 102 666 86 654 80
+      C640 70 621 79 616 97
+      C610 117 624 145 610 151
+      C595 158 591 134 593 116
+      C596 95 583 85 569 91
+      C555 99 544 74 534 86
+      C527 94 538 111 525 118
+      C512 126 506 114 507 99
+      C507 86 500 80 493 82
+      C481 83 483 155 471 165
+      C459 174 453 155 453 127
+      C453 106 458 84 446 74
+      C433 63 420 83 411 73
+      C401 63 402 49 392 48
+      C380 47 381 85 370 91
+      C359 97 351 77 342 80
+      C327 84 323 119 326 162
+      C329 207 322 222 309 221
+      C294 220 297 190 299 150
+      C301 114 291 84 277 79
+      C260 74 257 113 257 144
+      C257 167 256 180 248 181
+      C236 183 236 164 236 145
+      C237 119 232 102 216 101
+      C205 99 204 111 192 106
+      C178 99 171 95 158 110
+      C144 121 142 83 125 84
+      C106 85 101 113 101 147
+      C101 170 102 185 91 187
+      C77 189 77 169 77 143
+      C77 113 69 96 57 100
+      C45 105 44 118 31 106
+      C17 93 12 92 12 118
+      C12 135 18 180 13 199
+      C10 210 3 211 0 208 Z"/>
   </svg>
 </header>
 <main id="site-main"><section class="section intro-section" id="first-impression"><div class="wrap intro"><div class="reveal"><h2>Started a new biz? Your clients will Google you.</h2><p>Give them a great first impression with a professional website that makes your business look the part and builds trust from day one.</p></div></div><svg class="outline-bee" viewBox="0 0 96 78" aria-hidden="true"><use href="#bee"/></svg></section>
@@ -1078,7 +1185,7 @@ footer{background:var(--ink)}
   <div class="process-stick">
     <div class="process-container">
       <div class="process-heading">
-        <h2 id="process-heading"><span class="process-first-line">We deliver your website</span><br><span class="process-second-line">in <span class="process-duration">24 hours</span>.</span></h2>
+        <h2 id="process-heading"><span class="process-first-line">We deliver <span class="process-website-line">your website in</span></span> <span class="process-duration">24 hours.</span></h2>
       </div>
       <div class="process-timeline" id="process-timeline" aria-label="Our four-step website process">
         <div class="timeline-line" aria-hidden="true"><div class="timeline-line-fill" id="timeline-line-fill"></div></div>
@@ -1110,95 +1217,123 @@ footer{background:var(--ink)}
 <section class="section" id="included"><div class="wrap"><div class="section-head reveal"><h2>Everything your website needs.<br>All in one place.</h2><p>Beautiful design is just the beginning. Every SiteHoney website is built to help your business look professional and get noticed.</p></div><div class="features"><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12"/><path d="M9 20v-6h6v6M8 9h.01M12 9h.01M16 9h.01"/></svg></div><h3>Made for your business</h3><p>A polished website shaped around your brand, services and customers.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="15" height="11" rx="2"/><path d="M8 20h5M10.5 15v5"/><rect x="16" y="10" width="5" height="10" rx="1.5"/></svg></div><h3>Beautiful on every screen</h3><p>Clean layouts that work on mobiles, tablets and desktops.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"/><path d="M5 8v11h11"/></svg></div><h3>Built to convert</h3><p>Clear calls to action that make it easy for visitors to get in touch.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="12" height="15" rx="2"/><path d="M7 8H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2M10 9h6M10 13h6"/></svg></div><h3>Your essential pages</h3><p>Home, about, services and contact pages, structured around what matters.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="m14 7 3 3M8.5 16l3 3"/></svg></div><h3>Room to refine</h3><p>Two rounds of revisions to get the final details feeling just right.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 5c2.5-2 5.5-2 5.5-2s0 3-2 5.5l-5.7 5.7-4-4L14 5Z"/><path d="m8 10-3 .5L3 13l4.5.5M12 14l.5 4.5L15 21l.5-3M7 17c-1.5 0-3 1.5-3 3 1.5 0 3-1.5 3-3Z"/><circle cx="15.5" cy="7" r="1"/></svg></div><h3>Launch taken care of</h3><p>Help with your domain, hosting setup and getting your site online.</p></div></div></div></section>
 <section class="section pricing" id="pricing">
   <svg class="pricing-honey-top" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path fill="#ffd23f" d="M0 56
-      C 76 58, 119 53, 179 50
-      C 251 47, 278 35, 343 39
-      C 407 43, 432 56, 511 53
-      C 587 50, 630 34, 708 40
-      C 788 47, 822 59, 901 55
-      C 975 52, 1008 38, 1086 41
-      C 1156 43, 1195 52, 1276 49
-      C 1353 46, 1402 53, 1440 57
+    <path fill="#ffd23f" d="M0 59
+      C 96 58, 142 45, 218 53
+      C 273 60, 290 35, 351 41
+      C 396 46, 405 65, 462 58
+      C 522 51, 557 61, 608 45
+      C 641 35, 652 15, 674 18
+      C 697 20, 704 44, 732 36
+      C 755 29, 756 9, 776 14
+      C 795 18, 792 44, 829 50
+      C 879 58, 907 50, 955 57
+      C 1009 66, 1021 46, 1073 42
+      C 1124 38, 1147 65, 1190 55
+      C 1248 42, 1269 69, 1318 61
+      C 1375 51, 1415 63, 1440 59
       V100 H0 Z"/>
   </svg>
 <div class="wrap price-layout"><div class="reveal"><h2>Yes.<br>It's really that cheap.</h2><p style="font-size:12px;font-weight:700;color:#57491c">Hosting and maintenance: £19/month, billed separately. Cancel anytime.</p></div><div class="price-card reveal"><div class="price">£99<small> one-off</small></div><div class="price-description" style="font-size:13px;color:var(--muted)">Professional website design & build</div><ul><li>Customised, professional design</li><li>Mobile-friendly on every device</li><li>Essential business pages</li><li>Two rounds of revisions</li><li>Domain connection and launch support</li></ul><a class="pill" href="https://wa.me/447544821621?text=Hi%20SiteHoney%2C%20I%27m%20interested%20in%20getting%20a%20website%20built%20for%20my%20business.%20Can%20we%20have%20a%20quick%205-minute%20call%20to%20discuss%20it%3F" target="_blank" rel="noopener noreferrer">Let's build your website</a></div></div>
-  <svg class="pricing-honey-bottom pricing-honey-desktop" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path fill="#ffd23f" d="M0 0 H1440 V54
-      C 1417 53, 1394 56, 1371 54
-      C 1351 52, 1336 49, 1325 53
-      C 1315 57, 1311 65, 1312 75
-      C 1314 88, 1311 99, 1301 99
-      C 1290 99, 1287 88, 1288 75
-      C 1290 64, 1286 56, 1275 53
-      C 1255 47, 1230 57, 1213 67
-      C 1198 76, 1197 93, 1199 116
-      C 1202 148, 1192 175, 1168 175
-      C 1144 175, 1136 148, 1139 116
-      C 1142 87, 1136 68, 1121 61
-      C 1108 55, 1091 54, 1075 58
-      C 1062 61, 1056 70, 1057 81
-      C 1059 95, 1056 105, 1047 105
-      C 1038 105, 1035 95, 1036 81
-      C 1037 69, 1033 60, 1022 57
-      C 1000 50, 974 58, 949 55
-      C 924 52, 899 48, 874 54
-      C 858 58, 851 72, 853 90
-      C 856 114, 848 134, 829 134
-      C 810 134, 801 114, 804 90
-      C 806 71, 800 59, 788 56
-      C 770 51, 746 56, 720 58
-      C 694 61, 668 63, 643 58
-      C 625 54, 618 64, 620 77
-      C 622 92, 619 102, 610 102
-      C 601 102, 598 92, 599 77
-      C 601 64, 596 55, 585 51
-      C 566 45, 549 49, 537 61
-      C 523 74, 520 92, 523 115
-      C 526 146, 517 172, 494 172
-      C 472 172, 464 146, 467 115
-      C 470 89, 464 71, 451 63
-      C 438 55, 420 54, 403 61
-      C 388 67, 381 79, 383 94
-      C 385 111, 381 123, 370 123
-      C 359 123, 355 111, 357 94
-      C 358 80, 354 69, 344 64
-      C 329 56, 308 58, 286 58
-      C 264 58, 246 53, 230 51
-      C 214 49, 198 52, 188 61
-      C 179 70, 177 83, 179 98
-      C 181 115, 175 127, 163 127
-      C 151 127, 146 114, 149 98
-      C 151 84, 148 72, 138 66
-      C 126 58, 112 58, 96 61
-      C 77 65, 57 63, 38 57
-      C 26 53, 14 52, 0 54 Z"/>
+  <svg class="pricing-honey-bottom pricing-honey-desktop" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#ffd23f" d="M0 0 H1440 V83
+      C1434 87 1437 168 1425 174
+      C1411 183 1405 163 1407 139
+      C1409 111 1404 98 1392 96
+      C1379 94 1372 112 1363 107
+      C1351 100 1359 83 1345 82
+      C1328 79 1319 92 1318 109
+      C1316 133 1325 150 1307 153
+      C1291 154 1290 131 1293 113
+      C1297 91 1283 77 1264 83
+      C1250 88 1243 100 1230 94
+      C1214 86 1207 66 1192 76
+      C1174 88 1189 120 1173 125
+      C1158 129 1156 106 1159 88
+      C1162 68 1146 61 1130 73
+      C1113 85 1122 136 1115 168
+      C1110 193 1091 202 1077 192
+      C1058 177 1067 140 1064 112
+      C1062 87 1049 69 1034 70
+      C1020 71 1017 90 1005 91
+      C990 91 985 65 972 66
+      C951 68 956 102 940 105
+      C924 108 916 88 903 89
+      C886 90 882 130 883 158
+      C886 191 870 210 853 208
+      C834 206 835 177 838 146
+      C841 110 823 88 808 87
+      C791 85 792 120 777 122
+      C762 124 760 98 747 96
+      C727 92 720 110 722 133
+      C724 158 711 175 695 171
+      C678 166 680 140 684 120
+      C688 97 675 83 660 86
+      C645 89 640 106 627 103
+      C613 99 610 82 598 91
+      C584 102 592 163 582 184
+      C570 209 548 198 548 171
+      C549 146 556 111 540 98
+      C526 87 513 106 501 101
+      C486 95 493 66 479 61
+      C462 55 462 95 448 101
+      C432 108 428 84 416 83
+      C398 83 395 112 399 151
+      C403 187 392 218 372 219
+      C350 219 345 190 350 158
+      C357 114 345 84 328 82
+      C309 81 308 120 306 147
+      C305 166 299 185 287 184
+      C273 182 277 158 276 138
+      C275 105 266 88 250 92
+      C235 97 227 107 215 100
+      C199 90 190 87 179 103
+      C164 124 155 82 138 80
+      C119 78 110 107 112 135
+      C115 166 103 184 88 180
+      C71 177 72 148 76 126
+      C80 101 66 89 52 99
+      C37 111 30 91 18 94
+      C5 98 8 155 7 180
+      C6 195 3 200 0 198 Z" transform="translate(1440 0) scale(-1 1)"/>
   </svg>
-  <svg class="pricing-honey-bottom pricing-honey-mobile" viewBox="0 0 390 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path fill="#ffd23f" d="M0 0 H390 V52
-      C 374 51, 360 54, 348 52
-      C 337 50, 329 49, 320 52
-      C 312 55, 308 63, 309 73
-      C 311 85, 308 95, 299 95
-      C 290 95, 287 85, 289 73
-      C 290 64, 287 57, 278 54
-      C 261 48, 244 57, 230 66
-      C 219 74, 217 88, 220 108
-      C 222 133, 215 155, 198 155
-      C 181 155, 174 133, 177 108
-      C 179 85, 174 70, 162 63
-      C 150 56, 137 54, 124 58
-      C 114 61, 109 69, 110 79
-      C 111 91, 109 101, 101 101
-      C 93 101, 90 91, 91 79
-      C 93 69, 89 61, 80 58
-      C 64 52, 51 56, 43 67
-      C 35 77, 33 89, 35 102
-      C 37 120, 33 134, 23 134
-      C 13 134, 9 120, 11 102
-      C 13 88, 10 77, 0 52 Z"/>
+  <svg class="pricing-honey-bottom pricing-honey-mobile" viewBox="175 0 390 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#ffd23f" d="M0 0 H740 V90
+      C731 94 736 157 723 168
+      C709 179 699 161 700 138
+      C702 110 694 97 679 94
+      C668 91 662 105 652 100
+      C640 94 641 80 626 84
+      C611 88 604 101 606 122
+      C608 146 600 159 588 157
+      C573 155 574 135 579 114
+      C584 92 570 74 552 78
+      C539 81 542 99 531 102
+      C520 106 516 84 503 89
+      C490 94 496 155 482 179
+      C470 197 450 179 452 149
+      C454 125 459 91 443 85
+      C429 79 421 96 407 92
+      C394 89 392 57 379 61
+      C364 66 374 98 361 109
+      C347 121 341 100 328 103
+      C315 107 317 136 319 164
+      C322 202 314 217 296 216
+      C279 215 283 188 285 156
+      C288 116 273 91 256 93
+      C241 95 240 113 234 140
+      C231 157 222 171 211 165
+      C201 159 207 135 205 115
+      C202 96 188 92 175 96
+      C161 100 154 82 143 87
+      C129 92 131 120 120 129
+      C107 141 100 114 104 94
+      C108 75 97 75 80 83
+      C68 89 58 81 44 90
+      C28 100 34 145 29 168
+      C25 191 8 190 0 182 Z"/>
   </svg>
 </section>
-<section class="section"><div class="wrap faq"><h2>Frequently asked.</h2><details><summary>Can you really build my website in 24 hours?</summary><p>That's our target for standard business websites once we've received your content and brief. More complex projects or additional changes may take longer, and we'll tell you upfront.</p></details><details><summary>Why is the website only £99?</summary><p>We've streamlined the process of building clean, professional websites for small businesses, making great design accessible without a large upfront bill.</p></details><details><summary>What about hosting and maintenance?</summary><p>Hosting and ongoing maintenance cost £19 per month. There is no minimum term — cancel anytime.</p></details><details><summary>Can I use a domain I already own?</summary><p>Absolutely. We can help connect your existing domain when your website is ready.</p></details><details><summary>Will my website work on mobile?</summary><p>Yes. Every website is designed to look and work beautifully across mobile, tablet and desktop screens.</p></details><details><summary>Can you match my existing branding?</summary><p>Of course. We'll work with your logo, colours and business identity, or help establish a simple visual direction if you're starting fresh.</p></details></div></section>
+<section class="section"><div class="wrap faq"><h2>Frequently Asked Questions</h2><details><summary>Can you really build my website in 24 hours?</summary><p>That's our target for standard business websites once we've received your content and brief. More complex projects or additional changes may take longer, and we'll tell you upfront.</p></details><details><summary>Why is the website only £99?</summary><p>We've streamlined the process of building clean, professional websites for small businesses, making great design accessible without a large upfront bill.</p></details><details><summary>What about hosting and maintenance?</summary><p>Hosting and ongoing maintenance cost £19 per month. There is no minimum term — cancel anytime.</p></details><details><summary>Can I use a domain I already own?</summary><p>Absolutely. We can help connect your existing domain when your website is ready.</p></details><details><summary>Will my website work on mobile?</summary><p>Yes. Every website is designed to look and work beautifully across mobile, tablet and desktop screens.</p></details><details><summary>Can you match my existing branding?</summary><p>Of course. We'll work with your logo, colours and business identity, or help establish a simple visual direction if you're starting fresh.</p></details></div></section>
 </main>
 <footer class="site-footer" aria-label="SiteHoney footer">
   <div class="wrap footer-wrap">
@@ -1588,6 +1723,7 @@ if(document.fonts?.ready)document.fonts.ready.then(()=>{layoutStoryBee();queueSt
   function equaliseHeroLines() {
     title.style.fontSize = '';
     [first, second, third].forEach(el => { el.style.fontSize = ''; el.style.lineHeight = ''; });
+    const lineHeight = matchMedia('(max-width:800px)').matches ? '1.02' : '1.09';
 
     const available = Math.max(100, copy.getBoundingClientRect().width - 3);
     let reference = renderedTextWidth(first);
@@ -1608,9 +1744,9 @@ if(document.fonts?.ready)document.fonts.ready.then(()=>{layoutStoryBee();queueSt
         const fontSize = parseFloat(getComputedStyle(line).fontSize);
         line.style.fontSize = (fontSize * reference / currentWidth).toFixed(2) + 'px';
       }
-      line.style.lineHeight = '1.09';
+      line.style.lineHeight = lineHeight;
     }
-    first.style.lineHeight = '1.09';
+    first.style.lineHeight = lineHeight;
   }
 
   let resizePending = false;
@@ -1624,5 +1760,26 @@ if(document.fonts?.ready)document.fonts.ready.then(()=>{layoutStoryBee();queueSt
   window.addEventListener('resize', scheduleEqualise, { passive: true });
   if ('ResizeObserver' in window) new ResizeObserver(scheduleEqualise).observe(copy);
 })();
+</script>
+<script>
+// Reuse each fill's exact curve so the outline stays on top of the liquid edge.
+document.querySelectorAll('.hero-honey-drip, .pricing-honey-bottom, .pricing-honey-top, .process-liquid-edge').forEach(svg => {
+  const fill = svg.querySelector('path');
+  const shape = fill?.getAttribute('d');
+  if (!shape) return;
+  let contour;
+  if (svg.classList.contains('pricing-honey-top') || svg.classList.contains('process-liquid-bottom')) {
+    contour = shape.match(/^(M[\s\S]*?)\s+V100\b/)?.[1];
+  } else {
+    const match = shape.match(/H\s*([\d.]+)\s+V\s*([\d.]+)\s+(C[\s\S]*?)\s*Z\s*$/i);
+    if (match) contour = `M${match[1]} ${match[2]} ${match[3]}`;
+  }
+  if (!contour) return;
+  const outline = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  outline.setAttribute('class', 'honey-contour');
+  outline.setAttribute('d', contour);
+  if (fill.hasAttribute('transform')) outline.setAttribute('transform', fill.getAttribute('transform'));
+  svg.append(outline);
+});
 </script>
 </body></html>
