@@ -800,11 +800,12 @@ footer{background:var(--ink)}
   .section-head{margin-left:auto;margin-right:auto;text-align:center}
   .process-heading{text-align:center}
   .process-stick{align-items:flex-start;padding-top:90px;z-index:1}
-  .process-liquid-bottom{z-index:0}
+  .process-liquid-bottom{display:none}
   .price-layout>div:first-child{text-align:center}
   .price-layout>div:first-child p{margin-left:auto;margin-right:auto}
   .price{text-align:center;line-height:1}
   .price small{display:block;width:max-content;margin:.45em auto 0;white-space:nowrap;line-height:1.2}
+  .price-description{text-align:center}
   .price-card .pill{margin-left:auto;margin-right:auto}
   .footer-cta{align-items:center;justify-content:center;text-align:center}
   .footer-cta-content{max-width:760px}
@@ -826,6 +827,31 @@ footer{background:var(--ink)}
 }
 /* Wing geometry is baked into the paths: no SVG transforms for mobile browsers to misplace. */
 .bee-wing{animation:none!important;transform:none!important;transform-origin:initial!important}
+
+/* Interface symbols are vector/CSS geometry, never platform emoji glyphs. */
+.ui-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.window-chevron{display:flex;align-items:center;justify-content:center;width:15px;height:15px}
+.window-chevron .ui-arrow{width:13px;height:13px}
+.finished-mark>span:first-child svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.7;stroke-linecap:round;stroke-linejoin:round}
+.price-card li:before{content:"";display:inline-block;width:7px;height:12px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg);margin:0 14px 2px 3px}
+.scrollnote:after{content:"";width:8px;height:8px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg);margin-top:-4px}
+
+@media(max-width:800px){
+  .site-demo .demo-nav{height:16%;padding-inline:5%}
+  .site-demo .demo-links{gap:5px}
+  .site-demo .demo-links span:not(:last-child){display:none}
+  .site-demo .demo-links span:last-child{padding:6px 7px;white-space:nowrap}
+  .site-demo .demo-copy{left:6%;top:27%;width:52%}
+  .site-demo .demo-tag{font-size:clamp(4px,1.05vw,7px);line-height:1.25;margin-bottom:5%}
+  .site-demo .demo-title,.theme-wellness .demo-title{font-size:clamp(17px,5.2vw,30px);line-height:1.07}
+  .site-demo .demo-description{font-size:clamp(5px,1.45vw,8px);line-height:1.45;max-width:90%;margin-top:5%}
+  .site-demo .demo-button{font-size:clamp(5px,1.25vw,8px);line-height:1.2;margin-top:6%;padding:6px 8px;white-space:nowrap}
+  .site-demo .demo-button b{display:inline-flex;font-size:inherit}
+  .site-demo .demo-art,.theme-consultancy .demo-art,.theme-wellness .demo-art,.theme-trades .demo-art{right:5%;top:27%;width:35%;height:57%}
+  .site-demo .demo-footer{display:none}
+  .theme-consultancy .demo-logo,.theme-trades .demo-logo{font-size:clamp(10px,3vw,16px)}
+  .theme-wellness .demo-logo{font-size:clamp(13px,3.4vw,19px)}
+}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
 <symbol id="bee" viewBox="0 0 96 78">
@@ -848,7 +874,7 @@ footer{background:var(--ink)}
     </div>
     <div class="hive-stage" id="hive-stage" aria-label="Animated preview of bees building a website">
       <div class="web-window" id="web-window">
-        <div class="window-chrome"><div class="window-dots"><i></i><i></i><i></i></div><div class="window-address">yournewwebsite.co.uk</div><span class="window-chevron">↗</span></div>
+        <div class="window-chrome"><div class="window-dots"><i></i><i></i><i></i></div><div class="window-address">yournewwebsite.co.uk</div><span class="window-chevron"><svg class="ui-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></div>
         <div class="demo-reel" id="demo-reel" aria-hidden="true">
           <div class="site-demo" data-demo-slot="0"></div>
           <div class="site-demo" data-demo-slot="1"></div>
@@ -857,7 +883,7 @@ footer{background:var(--ink)}
       <div class="worker-bee worker-a" data-worker="0" aria-hidden="true"><span class="worker-tilt"><svg viewBox="0 0 96 78"><use href="#bee"/></svg><i class="worker-cargo"></i></span></div>
       <div class="worker-bee worker-b" data-worker="1" aria-hidden="true"><span class="worker-tilt"><svg viewBox="0 0 96 78"><use href="#bee"/></svg><i class="worker-cargo"></i></span></div>
       <div class="worker-bee worker-c" data-worker="2" aria-hidden="true"><span class="worker-tilt"><svg viewBox="0 0 96 78"><use href="#bee"/></svg><i class="worker-cargo"></i></span></div>
-      <div class="finished-mark" id="finished-mark" aria-hidden="true"><span>✓</span> <span class="finished-text">Website ready!</span></div>
+      <div class="finished-mark" id="finished-mark" aria-hidden="true"><span><svg viewBox="0 0 20 20"><path d="m4 10 4 4 8-9"/></svg></span> <span class="finished-text">Website ready!</span></div>
     </div>
   </div>
   <!-- Flat yellow honey edge with fewer, chunkier, more organic downward drips. -->
@@ -988,7 +1014,7 @@ footer{background:var(--ink)}
       C 1353 46, 1402 53, 1440 57
       V100 H0 Z"/>
   </svg>
-<div class="wrap price-layout"><div class="reveal"><h2>Yes.<br>It's really that cheap.</h2><p style="font-size:12px;font-weight:700;color:#57491c">Hosting and maintenance: £19/month, billed separately. Cancel anytime.</p></div><div class="price-card reveal"><div class="price">£99<small> one-off</small></div><div style="font-size:13px;color:var(--muted)">Professional website design & build</div><ul><li>Customised, professional design</li><li>Mobile-friendly on every device</li><li>Essential business pages</li><li>Two rounds of revisions</li><li>Domain connection and launch support</li></ul><a class="pill" href="https://wa.me/447544821621?text=Hi%20SiteHoney%2C%20I%27m%20interested%20in%20getting%20a%20website%20built%20for%20my%20business.%20Can%20we%20have%20a%20quick%205-minute%20call%20to%20discuss%20it%3F" target="_blank" rel="noopener noreferrer">Let's build your website</a></div></div>
+<div class="wrap price-layout"><div class="reveal"><h2>Yes.<br>It's really that cheap.</h2><p style="font-size:12px;font-weight:700;color:#57491c">Hosting and maintenance: £19/month, billed separately. Cancel anytime.</p></div><div class="price-card reveal"><div class="price">£99<small> one-off</small></div><div class="price-description" style="font-size:13px;color:var(--muted)">Professional website design & build</div><ul><li>Customised, professional design</li><li>Mobile-friendly on every device</li><li>Essential business pages</li><li>Two rounds of revisions</li><li>Domain connection and launch support</li></ul><a class="pill" href="https://wa.me/447544821621?text=Hi%20SiteHoney%2C%20I%27m%20interested%20in%20getting%20a%20website%20built%20for%20my%20business.%20Can%20we%20have%20a%20quick%205-minute%20call%20to%20discuss%20it%3F" target="_blank" rel="noopener noreferrer">Let's build your website</a></div></div>
   <svg class="pricing-honey-bottom pricing-honey-desktop" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <path fill="#ffd23f" d="M0 0 H1440 V54
       C 1417 53, 1394 56, 1371 54
@@ -1129,37 +1155,38 @@ const buildSchedule = [
   {key:'description',time:.53,worker:1}, {key:'button',time:.63,worker:2},
   {key:'footer',time:.71,worker:0}
 ];
+const mockArrow='<svg class="ui-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg>';
 const portfolio = [
   {
     domain:'northandco.co.uk', theme:'consultancy',
     content:`<div class="draft-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="demo-nav build-piece" data-build="nav"><span class="demo-logo">NORTH<span class="demo-dot">&amp;CO.</span></span><div class="demo-links"><span>What we do</span><span>About us</span><span>Let's talk ↗</span></div></div>
+      <div class="demo-nav build-piece" data-build="nav"><span class="demo-logo">NORTH<span class="demo-dot">&amp;CO.</span></span><div class="demo-links"><span>What we do</span><span>About us</span><span>Let's talk ${mockArrow}</span></div></div>
       <div class="demo-copy"><div class="demo-tag build-piece" data-build="tag">ADVICE THAT MOVES YOU FORWARD</div>
       <div class="demo-title build-piece" data-build="title">Good ideas.<br>Real impact<span>.</span></div>
       <div class="demo-description build-piece" data-build="description">Clear thinking and practical support to help your business grow.</div>
-      <div class="demo-button build-piece" data-build="button">Work with us <b>↗</b></div></div>
-      <div class="demo-art build-piece" data-build="art"><div class="consult-stat"><small>GROWTH IN MOTION</small><div class="consult-bars"><i></i><i></i><i></i><i></i><i></i></div><strong>↗</strong><span>Better, together.</span></div></div>
+      <div class="demo-button build-piece" data-build="button">Work with us <b>${mockArrow}</b></div></div>
+      <div class="demo-art build-piece" data-build="art"><div class="consult-stat"><small>GROWTH IN MOTION</small><div class="consult-bars"><i></i><i></i><i></i><i></i><i></i></div><strong>${mockArrow}</strong><span>Better, together.</span></div></div>
       <div class="demo-footer build-piece" data-build="footer" aria-hidden="true"></div>`
   },
   {
     domain:'stillwellstudio.co.uk', theme:'wellness',
     content:`<div class="draft-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="demo-nav build-piece" data-build="nav"><span class="demo-logo">stillwell<span class="demo-dot">.</span></span><div class="demo-links"><span>Our approach</span><span>Sessions</span><span>Book now ↗</span></div></div>
+      <div class="demo-nav build-piece" data-build="nav"><span class="demo-logo">stillwell<span class="demo-dot">.</span></span><div class="demo-links"><span>Our approach</span><span>Sessions</span><span>Book now ${mockArrow}</span></div></div>
       <div class="demo-copy"><div class="demo-tag build-piece" data-build="tag">A SPACE TO FEEL YOUR BEST</div>
       <div class="demo-title build-piece" data-build="title">Make room<br>for better days<span>.</span></div>
       <div class="demo-description build-piece" data-build="description">Thoughtful care, a calmer routine and a little time just for you.</div>
-      <div class="demo-button build-piece" data-build="button">Discover our studio <b>↗</b></div></div>
+      <div class="demo-button build-piece" data-build="button">Discover our studio <b>${mockArrow}</b></div></div>
       <div class="demo-art build-piece" data-build="art"><div class="well-arch"><div class="well-sun"></div><div class="well-hill well-hill-one"></div><div class="well-hill well-hill-two"></div><div class="well-leaf one"></div><div class="well-leaf two"></div><div class="well-leaf three"></div></div></div>
       <div class="demo-footer build-piece" data-build="footer" aria-hidden="true"></div>`
   },
   {
     domain:'brightbuild.co.uk', theme:'trades',
     content:`<div class="draft-lines" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
-      <div class="demo-nav build-piece" data-build="nav"><span class="demo-logo">BRIGHT<span class="demo-dot">BUILD</span></span><div class="demo-links"><span>Our services</span><span>Projects</span><span>Get a quote ↗</span></div></div>
+      <div class="demo-nav build-piece" data-build="nav"><span class="demo-logo">BRIGHT<span class="demo-dot">BUILD</span></span><div class="demo-links"><span>Our services</span><span>Projects</span><span>Get a quote ${mockArrow}</span></div></div>
       <div class="demo-copy"><div class="demo-tag build-piece" data-build="tag">LOCAL EXPERTS. QUALITY WORK.</div>
       <div class="demo-title build-piece" data-build="title">Built right.<br>First time<span>.</span></div>
       <div class="demo-description build-piece" data-build="description">Reliable home improvements, from the first chat to the final finish.</div>
-      <div class="demo-button build-piece" data-build="button">Request a free quote <b>↗</b></div></div>
+      <div class="demo-button build-piece" data-build="button">Request a free quote <b>${mockArrow}</b></div></div>
       <div class="demo-art build-piece" data-build="art"><div class="build-sky"><div class="build-sun"></div><div class="build-house"><span class="roof"></span><span class="wall"></span><span class="door"></span><span class="window-one"></span><span class="window-two"></span></div><div class="build-ground"></div></div></div>
       <div class="demo-footer build-piece" data-build="footer">Proudly making places better.</div>`
   }
