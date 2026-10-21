@@ -1037,6 +1037,15 @@ footer{background:var(--ink)}
 #included{padding-top:clamp(80px,7vw,115px);padding-bottom:clamp(155px,13vw,220px)}
 #first-impression .intro p{margin-bottom:22px}
 @media(max-width:800px){#included{padding-top:78px;padding-bottom:135px}}
+/* Let the mobile timeline grow with its content so the title and final step stay clear. */
+@media(max-width:800px){
+  .process-section{height:auto;min-height:0;padding:115px 0 95px!important}
+  .process-stick{position:relative;height:auto;min-height:0;padding:0;overflow:visible}
+  .process-container{gap:34px}
+  .process-timeline{min-height:0;gap:32px;padding-top:0;padding-bottom:0}
+  .process-step,.process-step:last-child{min-height:0;opacity:1;transform:none;filter:none;transition:none}
+  .process-step p{margin-bottom:0}
+}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
 <symbol id="bee" viewBox="0 0 96 78">
