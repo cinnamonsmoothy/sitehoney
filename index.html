@@ -1517,7 +1517,7 @@ function componentPoint(key){
   const piece=demoSlots[currentSlot].querySelector(`[data-build="${key}"]`);
   if(!piece)return defaultPieces[key];
   const a=piece.getBoundingClientRect(),b=stage.getBoundingClientRect();
-  if(!b.width||!b.height)return defaultPieces[key];
+  if(!a.width||!a.height||!b.width||!b.height)return defaultPieces[key];
   return {x:(a.left+a.width*.5-b.left)/b.width*620,y:(a.top+a.height*.5-b.top)/b.height*510};
 }
 // Gentle cubic interpolation between story beats: no sharp waypoint corners.
@@ -1535,7 +1535,9 @@ function smoothPosition(route,t){
 function buildRoute(i){
   const start=launchPoints[i],out=[ [0,start.x,start.y] ];
   if(i===0){
-    const nav=componentPoint('nav'),art=componentPoint('art'),foot=componentPoint('footer');
+    const nav=componentPoint('nav'),art=componentPoint('art');
+    const footer=demoSlots[currentSlot].querySelector('[data-build="footer"]');
+    const foot=footer?.getClientRects().length?componentPoint('footer'):{x:250,y:pushingRows[0]+35};
     out.push([.065,430,95],[.11,nav.x,nav.y-24],[.18,456,55],[.28,550,175],
       [.365,art.x+49,art.y-60],[.42,art.x,art.y-28],[.49,500,116],
       [.60,360,402],[.71,foot.x,foot.y-19]);
@@ -1556,7 +1558,7 @@ function buildRoute(i){
 // leaves the bee and settles exactly where that website component appears.
 function placeBlock(step,worker){
   const active=demoSlots[currentSlot],piece=active.querySelector(`[data-build="${step.key}"]`);
-  if(!piece)return;
+  if(!piece||!piece.getClientRects().length)return;
   const stageBox=stage.getBoundingClientRect(),beeBox=worker.node.getBoundingClientRect(),targetBox=piece.getBoundingClientRect();
   const originX=beeBox.left+beeBox.width*.5-stageBox.left;
   const originY=beeBox.bottom-stageBox.top-2;
