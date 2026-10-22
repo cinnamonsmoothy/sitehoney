@@ -793,9 +793,9 @@ footer{background:var(--ink)}
 .nav.is-scrolled .brand-logo{height:40px}
 .footer-identity .brand-logo{height:52px}
 
-/* Keep the WhatsApp shortcut crisp and flat. */
-.floating-whatsapp{border-color:var(--ink);box-shadow:none}
-.floating-whatsapp:hover{box-shadow:none}
+/* Give the floating WhatsApp shortcut a crisp, high contrast offset shadow. */
+.floating-whatsapp{border-color:var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.floating-whatsapp:hover{transform:translate(3px,3px);box-shadow:2px 2px 0 var(--ink)}
 
 /* The legal/sign-off row keeps its original split layout. */
 .footer-bottom{text-align:left}
