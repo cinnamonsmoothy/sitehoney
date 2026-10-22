@@ -998,7 +998,8 @@ footer{background:var(--ink)}
 .process-second-line{white-space:normal}
 .process-duration{
   display:block;
-  width:100%;
+  width:max-content;
+  max-width:100%;
   text-align:center;
   font-size:1.4em;
   padding:.035em .08em .11em;
@@ -1073,6 +1074,7 @@ footer{background:var(--ink)}
   .process-stick{position:sticky;height:100svh;min-height:0;padding:0;overflow:hidden;align-items:stretch}
   .process-container{height:100%;padding:90px 0 18px;grid-template-rows:auto minmax(0,1fr);gap:18px}
   .process-heading h2{font-size:clamp(28px,min(9vw,5svh),42px)}
+  .process-duration{margin-left:auto;margin-right:auto}
   .process-timeline{height:100%;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));padding:0 0 0 58px}
   .process-step,.process-step:last-child{min-height:0;grid-template-columns:50px minmax(0,1fr);gap:12px}
   .process-number{width:48px;height:48px;font-size:18px}
