@@ -654,6 +654,7 @@ footer{background:var(--ink)}
   pointer-events:none;z-index:1;
 }
 .pricing-honey-top--mobile{display:none}
+.pricing-honey-top--mobile>path:first-child{transform:translateY(1px)}
 .pricing-honey-bottom{
   position:absolute;left:0;bottom:-158px;
   width:100%;height:200px;display:block;
@@ -754,6 +755,7 @@ footer{background:var(--ink)}
 .process-liquid-edge{position:absolute;left:0;width:100%;height:94px;display:block;pointer-events:none;z-index:3}
 .process-liquid-top{top:-1px}
 .process-liquid-bottom{bottom:-1px}
+.process-liquid-bottom--mobile{display:none}
 /* The ink contour is drawn above each liquid fill, directly on its curved edge. */
 .honey-contour{fill:none;stroke:var(--ink);stroke-width:3;stroke-linejoin:round;stroke-linecap:round;vector-effect:non-scaling-stroke}
 @media(max-width:800px){.process-liquid-edge{height:65px}}
@@ -815,7 +817,8 @@ footer{background:var(--ink)}
   .process-heading{text-align:center}
   .process-section{overflow:visible}
   .process-stick{align-items:flex-start;padding-top:90px;z-index:1}
-  .process-liquid-bottom{display:block;bottom:-1px;transform:translateY(62%);z-index:3}
+  .process-liquid-bottom:not(.process-liquid-bottom--mobile){display:none}
+  .process-liquid-bottom--mobile{display:block;bottom:-1px;transform:translateY(70%);z-index:3}
   .price-layout>div:first-child{text-align:center}
   .price-layout>div:first-child p{margin-left:auto;margin-right:auto}
   .price{text-align:center;line-height:1}
@@ -1075,7 +1078,7 @@ footer{background:var(--ink)}
 @media(max-width:800px){
   .process-section{height:290svh;min-height:1450px;padding:0!important}
   .process-stick{position:sticky;height:100svh;min-height:0;padding:0;overflow:hidden;align-items:stretch}
-  .process-container{height:100%;padding:90px 0 18px;grid-template-rows:auto minmax(0,1fr);gap:26px}
+  .process-container{height:100%;padding:90px 0 18px;grid-template-rows:auto minmax(0,1fr);gap:34px}
   .process-heading h2{font-size:clamp(28px,min(9vw,5svh),42px)}
   .process-duration{margin-left:auto;margin-right:auto}
   .process-timeline{height:100%;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));padding:0 0 0 58px}
@@ -1087,7 +1090,7 @@ footer{background:var(--ink)}
   .process-time strong{font-size:12px}
 }
 @media(max-width:420px){
-  .process-container{padding-top:82px;padding-bottom:14px;gap:22px}
+  .process-container{padding-top:82px;padding-bottom:14px;gap:30px}
   .process-timeline{padding-left:54px}
   .process-step,.process-step:last-child{grid-template-columns:42px minmax(0,1fr);gap:10px}
   .process-number{width:40px;height:40px;font-size:16px;border-radius:13px}
@@ -1096,7 +1099,7 @@ footer{background:var(--ink)}
   .process-time strong{font-size:11px}
 }
 @media(max-width:360px) and (max-height:620px){
-  .process-container{padding-top:75px;padding-bottom:10px;gap:18px}
+  .process-container{padding-top:75px;padding-bottom:10px;gap:22px}
   .process-heading h2{font-size:26px}
   .process-timeline{padding-left:44px}
   .process-step,.process-step:last-child{grid-template-columns:37px minmax(0,1fr);gap:8px}
@@ -1287,6 +1290,9 @@ footer{background:var(--ink)}
   </div>
   <svg class="process-liquid-edge process-liquid-bottom" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <path fill="#fffdf6" d="M0 50 C75 44 112 35 187 41 C264 49 308 60 380 52 C453 43 490 32 565 41 C649 52 680 59 761 50 C837 41 873 33 949 42 C1022 51 1064 60 1137 51 C1219 40 1281 36 1347 43 C1382 47 1412 50 1440 46 V100 H0 Z"/>
+  </svg>
+  <svg class="process-liquid-edge process-liquid-bottom process-liquid-bottom--mobile" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+    <path fill="#fff8e6" d="M0 0 H1440 V46 C1412 50 1382 47 1347 43 C1281 36 1219 40 1137 51 C1064 60 1022 51 949 42 C873 33 837 41 761 50 C680 59 649 52 565 41 C490 32 453 43 380 52 C308 60 264 49 187 41 C112 35 75 44 0 50 Z"/>
   </svg>
 </section>
 <section class="section" id="included"><div class="wrap"><div class="section-head reveal"><h2>Everything your website needs.<br>All in one place.</h2><p>Beautiful design is just the beginning. Every SiteHoney website is built to help your business look professional and get noticed.</p></div><div class="features"><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V8l8-4 8 4v12"/><path d="M9 20v-6h6v6M8 9h.01M12 9h.01M16 9h.01"/></svg></div><h3>Made for your business</h3><p>A polished website shaped around your brand, services and customers.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="15" height="11" rx="2"/><path d="M8 20h5M10.5 15v5"/><rect x="16" y="10" width="5" height="10" rx="1.5"/></svg></div><h3>Beautiful on every screen</h3><p>Clean layouts that work on mobiles, tablets and desktops.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 19 19 5M9 5h10v10"/><path d="M5 8v11h11"/></svg></div><h3>Built to convert</h3><p>Clear calls to action that make it easy for visitors to get in touch.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="12" height="15" rx="2"/><path d="M7 8H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2M10 9h6M10 13h6"/></svg></div><h3>Your essential pages</h3><p>Home, about, services and contact pages, structured around what matters.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m4 20 4.5-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/><path d="m14 7 3 3M8.5 16l3 3"/></svg></div><h3>Room to refine</h3><p>Two rounds of revisions to get the final details feeling just right.</p></div><div class="feature reveal"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 5c2.5-2 5.5-2 5.5-2s0 3-2 5.5l-5.7 5.7-4-4L14 5Z"/><path d="m8 10-3 .5L3 13l4.5.5M12 14l.5 4.5L15 21l.5-3M7 17c-1.5 0-3 1.5-3 3 1.5 0 3-1.5 3-3Z"/><circle cx="15.5" cy="7" r="1"/></svg></div><h3>Launch taken care of</h3><p>Help with your domain, hosting setup and getting your site online.</p></div></div></div></section>
@@ -1857,7 +1863,7 @@ document.querySelectorAll('.hero-honey-drip, .pricing-honey-bottom, .pricing-hon
   const shape = fill?.getAttribute('d');
   if (!shape) return;
   let contour;
-  if (svg.classList.contains('pricing-honey-top') || svg.classList.contains('process-liquid-bottom')) {
+  if (svg.classList.contains('pricing-honey-top') || (svg.classList.contains('process-liquid-bottom') && !svg.classList.contains('process-liquid-bottom--mobile'))) {
     contour = shape.match(/^(M[\s\S]*?)\s+V100\b/)?.[1];
   } else {
     const match = shape.match(/H\s*([\d.]+)\s+V\s*([\d.]+)\s+(C[\s\S]*?)\s*Z\s*$/i);
