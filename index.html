@@ -1148,10 +1148,13 @@ footer{background:var(--ink)}
 }
 @media(prefers-reduced-motion:reduce){#included .feature{transition:none}}
 @media(max-width:600px){#included .feature{min-height:220px;padding:28px 25px 30px}#included .feature .symbol{margin-bottom:27px}}
-/* Solid white offset shadows on the two primary contact buttons. */
-.navlinks .pill,.hero-actions .hero-cta{box-shadow:5px 5px 0 #fff;transition:transform .18s ease,box-shadow .18s ease}
-.navlinks .pill:hover,.hero-actions .hero-cta:hover{background:var(--ink);color:#fff;transform:translateY(4px);box-shadow:5px 1px 0 #fff;text-decoration:none}
-@media(prefers-reduced-motion:reduce){.navlinks .pill,.hero-actions .hero-cta{transition:none}}
+/* The hero CTA presses diagonally into its fixed white shadow. */
+.hero-actions .hero-cta{box-shadow:5px 5px 0 #fff;transition:transform .18s ease,box-shadow .18s ease}
+.hero-actions .hero-cta:hover{background:var(--ink);color:#fff;transform:translate(4px,4px);box-shadow:1px 1px 0 #fff}
+/* Keep the header CTA's original color hover, without an underline or shadow. */
+.navlinks .pill,.navlinks .pill:hover{box-shadow:none}
+.navlinks .pill:hover{text-decoration:none}
+@media(prefers-reduced-motion:reduce){.hero-actions .hero-cta{transition:none}}
 ::selection{background:var(--ink);color:#fff}
 ::-moz-selection{background:var(--ink);color:#fff}
 /* Draw the FAQ marks on a fixed box so their visual centre matches the question. */
