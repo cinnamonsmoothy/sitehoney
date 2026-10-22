@@ -201,7 +201,7 @@
 @media(max-width:800px){.hero h1{font-size:clamp(45px,9.5vw,67px)}}
 @media(max-width:420px){.hero h1{font-size:clamp(42px,10vw,51px)}}
 /* Prominent primary hero conversion button. */
-.hero-actions .hero-cta{padding:21px 30px;font-size:16px;font-weight:800;gap:12px;min-height:67px;line-height:1.25;justify-content:center;text-align:center;box-shadow:0 5px 0 rgba(32,28,19,.12)}
+.hero-actions .hero-cta{padding:21px 30px;font-size:16px;font-weight:800;gap:12px;min-height:67px;line-height:1.25;justify-content:center;text-align:center}
 .hero-cta-icon{width:21px;height:21px;flex:0 0 21px}
 @media(max-width:480px){.hero-actions .hero-cta{font-size:13px;padding:18px 17px;min-height:60px;gap:9px}.hero-cta-icon{width:19px;height:19px;flex-basis:19px}}
 
@@ -1079,7 +1079,7 @@ footer{background:var(--ink)}
 @media(max-width:800px){
   .process-section{height:290svh;min-height:1450px;padding:0!important}
   .process-stick{position:sticky;height:100svh;min-height:0;padding:0;overflow:hidden;align-items:stretch}
-  .process-container{height:100%;padding:90px 0 18px;grid-template-rows:auto minmax(0,1fr);gap:50px}
+  .process-container{height:100%;padding:90px 0 18px;grid-template-rows:auto minmax(0,1fr);gap:clamp(54px,7.2svh,66px)}
   .process-heading h2{font-size:clamp(28px,min(9vw,5svh),42px)}
   .process-duration{margin-left:auto;margin-right:auto}
   .process-timeline{height:100%;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));padding:0 0 0 58px}
@@ -1091,7 +1091,7 @@ footer{background:var(--ink)}
   .process-time strong{font-size:12px}
 }
 @media(max-width:420px){
-  .process-container{padding-top:82px;padding-bottom:14px;gap:48px}
+  .process-container{padding-top:82px;padding-bottom:14px;gap:clamp(56px,7.8svh,68px)}
   .process-timeline{padding-left:54px}
   .process-step,.process-step:last-child{grid-template-columns:42px minmax(0,1fr);gap:10px}
   .process-number{width:40px;height:40px;font-size:16px;border-radius:13px}
@@ -1100,7 +1100,7 @@ footer{background:var(--ink)}
   .process-time strong{font-size:11px}
 }
 @media(max-width:360px) and (max-height:620px){
-  .process-container{padding-top:75px;padding-bottom:10px;gap:30px}
+  .process-container{padding-top:75px;padding-bottom:10px;gap:40px}
   .process-heading h2{font-size:26px}
   .process-timeline{padding-left:44px}
   .process-step,.process-step:last-child{grid-template-columns:37px minmax(0,1fr);gap:8px}
@@ -1148,6 +1148,8 @@ footer{background:var(--ink)}
 }
 @media(prefers-reduced-motion:reduce){#included .feature{transition:none}}
 @media(max-width:600px){#included .feature{min-height:220px;padding:28px 25px 30px}#included .feature .symbol{margin-bottom:27px}}
+/* Solid white offset shadows on the two primary contact buttons. */
+.navlinks .pill,.hero-actions .hero-cta{box-shadow:5px 5px 0 #fff}
 /* Draw the FAQ marks on a fixed box so their visual centre matches the question. */
 .faq summary::after,.faq details[open] summary::after{
   content:"";display:block;flex:0 0 24px;width:24px;height:24px;padding:0;
