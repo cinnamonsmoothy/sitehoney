@@ -1037,14 +1037,45 @@ footer{background:var(--ink)}
 #included{padding-top:clamp(80px,7vw,115px);padding-bottom:clamp(155px,13vw,220px)}
 #first-impression .intro p{margin-bottom:22px}
 @media(max-width:800px){#included{padding-top:78px;padding-bottom:135px}}
-/* Let the mobile timeline grow with its content so the title and final step stay clear. */
+/* Keep the scroll reveal while fitting the heading and all four steps on a phone. */
 @media(max-width:800px){
-  .process-section{height:auto;min-height:0;padding:115px 0 95px!important}
-  .process-stick{position:relative;height:auto;min-height:0;padding:0;overflow:visible}
-  .process-container{gap:34px}
-  .process-timeline{min-height:0;gap:32px;padding-top:0;padding-bottom:0}
-  .process-step,.process-step:last-child{min-height:0;opacity:1;transform:none;filter:none;transition:none}
-  .process-step p{margin-bottom:0}
+  .process-section{height:290svh;min-height:1450px;padding:0!important}
+  .process-stick{position:sticky;height:100svh;min-height:0;padding:0;overflow:hidden;align-items:stretch}
+  .process-container{height:100%;padding:90px 0 18px;grid-template-rows:auto minmax(0,1fr);gap:18px}
+  .process-heading h2{font-size:clamp(28px,min(9vw,5svh),42px)}
+  .process-timeline{height:100%;min-height:0;display:grid;grid-template-rows:repeat(4,minmax(0,1fr));padding:0 0 0 58px}
+  .process-step,.process-step:last-child{min-height:0;grid-template-columns:50px minmax(0,1fr);gap:12px}
+  .process-number{width:48px;height:48px;font-size:18px}
+  .process-step h3{font-size:18px;margin-bottom:4px}
+  .process-step p{font-size:12.5px;line-height:1.35;margin-bottom:0}
+  .process-time{margin-bottom:4px;padding:5px 9px}
+  .process-time strong{font-size:12px}
+}
+@media(max-width:420px){
+  .process-container{padding-top:82px;padding-bottom:14px;gap:14px}
+  .process-timeline{padding-left:54px}
+  .process-step,.process-step:last-child{grid-template-columns:42px minmax(0,1fr);gap:10px}
+  .process-number{width:40px;height:40px;font-size:16px;border-radius:13px}
+  .process-step h3{font-size:16px}
+  .process-step p{font-size:11.5px}
+  .process-time strong{font-size:11px}
+}
+@media(max-width:360px) and (max-height:620px){
+  .process-container{padding-top:75px;padding-bottom:10px;gap:10px}
+  .process-heading h2{font-size:26px}
+  .process-timeline{padding-left:44px}
+  .process-step,.process-step:last-child{grid-template-columns:37px minmax(0,1fr);gap:8px}
+  .process-number{width:36px;height:36px;font-size:14px}
+  .process-step h3{font-size:14px;margin-bottom:2px}
+  .process-step p{font-size:10px;line-height:1.25}
+  .process-time{margin-bottom:2px;padding:4px 7px}
+  .process-time strong{font-size:10px}
+}
+@media(max-width:800px) and (prefers-reduced-motion:reduce){
+  .process-section{height:auto;min-height:0;padding:90px 0!important}
+  .process-stick{position:relative;height:auto;overflow:visible}
+  .process-container{height:auto;padding:0}
+  .process-timeline{height:auto;display:flex;gap:24px}
 }
 </style></head><body>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
