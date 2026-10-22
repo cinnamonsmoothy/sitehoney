@@ -1116,6 +1116,34 @@ footer{background:var(--ink)}
   .process-container{height:auto;padding:0}
   .process-timeline{height:auto;display:flex;gap:24px}
 }
+/* Individual feature cards: clear separation, rounded edges and solid ink shadows. */
+#included .features{
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:clamp(20px,2vw,28px);
+  border:0;
+}
+#included .feature{
+  display:flex;
+  flex-direction:column;
+  min-height:255px;
+  padding:32px 30px 34px;
+  background:var(--cream);
+  border:2px solid var(--ink);
+  border-radius:22px;
+  box-shadow:8px 8px 0 var(--ink);
+}
+#included .feature:nth-child(3n+2){background:#fff5d0}
+#included .feature .symbol{
+  width:56px;height:56px;flex:none;
+  margin-bottom:30px;
+  background:var(--yellow);
+  border:2px solid var(--ink);
+  border-radius:16px;
+  box-shadow:4px 4px 0 var(--ink);
+}
+#included .feature h3{font-size:clamp(18px,1.25vw,21px);line-height:1.25;letter-spacing:-.04em;margin-bottom:11px}
+#included .feature p{font-size:clamp(13px,.9vw,14px);line-height:1.6}
+@media(max-width:600px){#included .feature{min-height:220px;padding:28px 25px 30px}#included .feature .symbol{margin-bottom:27px}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
 <symbol id="bee" viewBox="0 0 96 78">
