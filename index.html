@@ -1148,6 +1148,14 @@ footer{background:var(--ink)}
 }
 @media(prefers-reduced-motion:reduce){#included .feature .symbol{transition:none}}
 @media(max-width:600px){#included .feature{min-height:220px;padding:28px 25px 30px}#included .feature .symbol{margin-bottom:27px}}
+/* Draw the FAQ marks on a fixed box so their visual centre matches the question. */
+.faq summary::after,.faq details[open] summary::after{
+  content:"";display:block;flex:0 0 24px;width:24px;height:24px;padding:0;
+  align-self:center;line-height:0;
+  background:linear-gradient(var(--ink),var(--ink)) center/18px 2.5px no-repeat,
+             linear-gradient(var(--ink),var(--ink)) center/2.5px 18px no-repeat;
+}
+.faq details[open] summary::after{background:linear-gradient(var(--ink),var(--ink)) center/18px 2.5px no-repeat}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
 <symbol id="bee" viewBox="0 0 96 78">
@@ -1458,7 +1466,7 @@ footer{background:var(--ink)}
       C25 191 8 190 0 182 Z"/>
   </svg>
 </section>
-<section class="section"><div class="wrap faq"><h2>Frequently Asked Questions</h2><details><summary>Can you really build my website in 24 hours?</summary><p>That's our target for standard business websites once we've received your content and brief. More complex projects or additional changes may take longer, and we'll tell you upfront.</p></details><details><summary>Why is the website only £99?</summary><p>We've streamlined the process of building clean, professional websites for small businesses, making great design accessible without a large upfront bill.</p></details><details><summary>What about hosting and maintenance?</summary><p>Hosting and ongoing maintenance cost £19 per month. There is no minimum term — cancel anytime.</p></details><details><summary>Can I use a domain I already own?</summary><p>Absolutely. We can help connect your existing domain when your website is ready.</p></details><details><summary>Will my website work on mobile?</summary><p>Yes. Every website is designed to look and work beautifully across mobile, tablet and desktop screens.</p></details><details><summary>Can you match my existing branding?</summary><p>Of course. We'll work with your logo, colours and business identity, or help establish a simple visual direction if you're starting fresh.</p></details></div></section>
+<section class="section"><div class="wrap faq"><h2>Frequently Asked Questions</h2><details name="sitehoney-faq"><summary>Can you really build my website in 24 hours?</summary><p>That's our target for standard business websites once we've received your content and brief. More complex projects or additional changes may take longer, and we'll tell you upfront.</p></details><details name="sitehoney-faq"><summary>Why is the website only £99?</summary><p>Building websites helps us form long-term relationships with companies. Some clients choose to use other services from us later, so we’re happy to keep our websites affordable. There’s no obligation to buy anything else.</p></details><details name="sitehoney-faq"><summary>What if I want changes to my website later?</summary><p>We take care of your hosting and all the technical bits that come with it. Your £19/month hosting and maintenance includes one hour of development time each month for changes. Just tell us what you need — we’re your website guy now.</p></details><details name="sitehoney-faq"><summary>Can I use a domain I already own?</summary><p>Absolutely. We can help connect your existing domain when your website is ready.</p></details><details name="sitehoney-faq"><summary>Will my website work on mobile?</summary><p>Yes. Every website is designed to look and work beautifully across mobile, tablet and desktop screens.</p></details><details name="sitehoney-faq"><summary>Can you match my existing branding?</summary><p>Of course. We'll work with your logo, colours and business identity, or help establish a simple visual direction if you're starting fresh.</p></details></div></section>
 </main>
 <footer class="site-footer" aria-label="SiteHoney footer">
   <div class="wrap footer-wrap">
@@ -1909,5 +1917,11 @@ document.querySelectorAll('.hero-honey-drip, .pricing-honey-bottom, .pricing-hon
   if (fill.hasAttribute('transform')) outline.setAttribute('transform', fill.getAttribute('transform'));
   svg.append(outline);
 });
+</script>
+<script>
+const faqItems=[...document.querySelectorAll('.faq details')];
+faqItems.forEach(item=>item.addEventListener('toggle',()=>{
+  if(item.open) faqItems.forEach(other=>{if(other!==item) other.open=false});
+}));
 </script>
 </body></html>
