@@ -678,9 +678,9 @@ footer{background:var(--ink)}
 
 /* October 19 finishing touches: a restrained floating nav and balanced hero edge. */
 .nav{position:fixed;inset:0 0 auto;top:0;z-index:100;pointer-events:none;transition:top .28s ease}
-.nav .nav-inner{pointer-events:auto;width:min(1340px,calc(100% - 100px));margin-inline:auto;min-height:94px;padding:0;transition:background .32s ease,border-radius .32s ease,padding .32s ease,min-height .32s ease,box-shadow .32s ease,width .32s ease,border-color .32s ease; border:1px solid transparent}
+.nav .nav-inner{pointer-events:auto;width:min(1340px,calc(100% - 100px));margin-inline:auto;min-height:94px;padding:0;transition:background .32s ease,border-radius .32s ease,padding .32s ease,min-height .32s ease,box-shadow .32s ease,width .32s ease,border-color .32s ease; border:2px solid transparent}
 .nav.is-scrolled{top:12px}
-.nav.is-scrolled .nav-inner{width:min(1340px,calc(100% - 48px));min-height:73px;height:73px;padding:0 25px;border-radius:999px;background:rgba(255,253,246,.96);border-color:rgba(32,28,19,.14);box-shadow:0 10px 32px rgba(32,28,19,.12);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
+.nav.is-scrolled .nav-inner{width:min(1340px,calc(100% - 48px));min-height:73px;height:73px;padding:0 25px;border-radius:999px;background:rgba(255,253,246,.96);border-color:var(--ink);box-shadow:none;-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}
 .nav .brand{white-space:nowrap}
 .nav.is-scrolled .navlinks .pill{padding:13px 21px}
 /* SVG's flat-to-drip seam sits exactly at hero bottom; it is no longer buried by the yellow panel. */
