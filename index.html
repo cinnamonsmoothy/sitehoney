@@ -201,7 +201,7 @@
 @media(max-width:800px){.hero h1{font-size:clamp(45px,9.5vw,67px)}}
 @media(max-width:420px){.hero h1{font-size:clamp(42px,10vw,51px)}}
 /* Prominent primary hero conversion button. */
-.hero-actions .hero-cta{padding:21px 30px;font-size:16px;font-weight:800;gap:12px;min-height:67px;line-height:1.25;justify-content:center;text-align:center}
+.hero-actions .hero-cta{padding:21px 30px;font-size:16px;font-weight:800;gap:12px;min-height:67px;line-height:1.25;justify-content:center;text-align:center;box-shadow:0 5px 0 rgba(32,28,19,.12)}
 .hero-cta-icon{width:21px;height:21px;flex:0 0 21px}
 @media(max-width:480px){.hero-actions .hero-cta{font-size:13px;padding:18px 17px;min-height:60px;gap:9px}.hero-cta-icon{width:19px;height:19px;flex-basis:19px}}
 
@@ -1148,13 +1148,9 @@ footer{background:var(--ink)}
 }
 @media(prefers-reduced-motion:reduce){#included .feature{transition:none}}
 @media(max-width:600px){#included .feature{min-height:220px;padding:28px 25px 30px}#included .feature .symbol{margin-bottom:27px}}
-/* The hero CTA presses diagonally into its fixed white shadow. */
-.hero-actions .hero-cta{box-shadow:5px 5px 0 #fff;transition:transform .18s ease,box-shadow .18s ease}
-.hero-actions .hero-cta:hover{background:var(--ink);color:#fff;transform:translate(4px,4px);box-shadow:1px 1px 0 #fff}
 /* Keep the header CTA's original color hover, without an underline or shadow. */
 .navlinks .pill,.navlinks .pill:hover{box-shadow:none}
 .navlinks .pill:hover{text-decoration:none}
-@media(prefers-reduced-motion:reduce){.hero-actions .hero-cta{transition:none}}
 ::selection{background:var(--ink);color:#fff}
 ::-moz-selection{background:var(--ink);color:#fff}
 /* Draw the FAQ marks on a fixed box so their visual centre matches the question. */
