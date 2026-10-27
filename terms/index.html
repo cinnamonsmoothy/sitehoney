@@ -21,7 +21,7 @@
     .site-header{background:var(--yellow);padding:22px max(24px,calc((100% - 1120px)/2))}
     .site-header a{display:inline-flex;align-items:center;text-decoration:none}
     .site-header img{display:block;width:190px;max-width:100%;height:auto}
-    main{width:min(760px,calc(100% - 48px));margin:0 auto;padding:72px 0 100px}
+    main{position:relative;width:min(760px,calc(100% - 48px));margin:0 auto;padding:72px 0 100px}
     h1{font-size:clamp(36px,6vw,58px);line-height:1.12;letter-spacing:-.065em;margin:0 0 14px}
     .updated{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 34px}
     .intro{font-size:17px;line-height:1.75;margin:0 0 44px}
@@ -35,12 +35,32 @@
     .agreement{border-top:1px solid var(--line);padding-top:28px;font-weight:700}
     footer{background:#17140f;color:#fffdf6;padding:26px 24px;text-align:center;font-size:13px}
     footer a{color:inherit;text-underline-offset:3px}
+    .terms-flight{position:absolute;top:0;bottom:0;left:calc(100% + 12px);width:clamp(46px,calc((100vw - 760px)/2 - 32px),180px);pointer-events:none;overflow:visible}
+    .terms-flight-track{display:block;width:100%;height:100%;overflow:visible}
+    .terms-flight-trail{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1 10;opacity:.48}
+    .terms-bee{position:absolute;top:0;left:0;width:40px;height:33px;color:var(--ink);overflow:visible;will-change:transform}
+    @media(max-width:900px){main{width:min(760px,calc(100% - 96px));margin-left:24px;margin-right:72px}.terms-flight{left:calc(100% + 5px);width:46px}.terms-bee{width:32px;height:26px}}
     @media(max-width:600px){.site-header{padding:18px 24px}.site-header img{width:160px}main{padding:48px 0 72px}section{padding:24px 0 22px}}
+    @media(prefers-reduced-motion:reduce){.terms-flight{display:none}}
   </style>
 </head>
 <body>
   <header class="site-header"><a href="/" aria-label="SiteHoney home"><img src="../assets/logo/sitehoney-wordmark.svg" alt="SiteHoney"></a></header>
   <main>
+    <div class="terms-flight" aria-hidden="true">
+      <svg class="terms-flight-track">
+        <defs><mask id="terms-trail-reveal" maskUnits="userSpaceOnUse"><path id="terms-trail-mask" fill="none" stroke="#fff" stroke-width="8"/></mask></defs>
+        <path id="terms-flight-path" class="terms-flight-trail" mask="url(#terms-trail-reveal)"/>
+      </svg>
+      <svg class="terms-bee" viewBox="0 0 96 78">
+        <g fill="#fffdf6" stroke="currentColor" stroke-width="2.7">
+          <g><path d="M44 39 C36 35 26 33 21 25 C16 16 20 7 29 6 C39 5 45 17 46 28 C46 33 45 37 44 39 Z"/><animateTransform attributeName="transform" type="rotate" values="-13 44 39;14 44 39;-13 44 39" dur=".12s" repeatCount="indefinite"/></g>
+          <g><path d="M52 39 C60 35 70 33 75 25 C80 16 76 7 67 6 C57 5 51 17 50 28 C50 33 51 37 52 39 Z"/><animateTransform attributeName="transform" type="rotate" values="13 52 39;-14 52 39;13 52 39" dur=".105s" begin="-.052s" repeatCount="indefinite"/></g>
+        </g>
+        <path d="M29 35 C18 35 11 43 11 53 C11 63 18 70 29 70 Q48 73 67 70 C78 70 85 63 85 53 C85 43 78 35 67 35 Q48 32 29 35 Z" fill="#ffd23f" stroke="currentColor" stroke-width="3"/>
+        <path d="M41.5 35.2 Q40 52.5 41.5 69.6 M55.5 35.2 Q57 52.5 55.5 69.6" stroke="currentColor" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
     <h1>Terms &amp; Conditions</h1>
     <p class="updated">Last updated: 12 September 2026</p>
     <p class="intro">By purchasing our services, you agree to the following terms.</p>
@@ -122,5 +142,79 @@
     <p class="agreement">By completing payment, you confirm that you have read and agreed to these Terms &amp; Conditions.</p>
   </main>
   <footer><a href="/">Back to SiteHoney</a></footer>
+  <script>
+    (() => {
+      const flight = document.querySelector('.terms-flight');
+      const path = document.getElementById('terms-flight-path');
+      const mask = document.getElementById('terms-trail-mask');
+      const bee = document.querySelector('.terms-bee');
+      let pathLength = 0;
+      let current = 0;
+      let target = 0;
+      let animating = false;
+
+      function makePath() {
+        const width = flight.clientWidth;
+        const height = flight.clientHeight;
+        const center = width / 2;
+        const swing = Math.min(width * .28, 42);
+        const start = 45;
+        const finish = height - 42;
+        const span = finish - start;
+        const first = start + span * .27;
+        const second = start + span * .66;
+        const loop = Math.min(68, Math.max(26, span * .055));
+        const d = [
+          `M ${center} ${start}`,
+          `C ${center-swing} ${start+span*.08} ${center+swing} ${first-loop} ${center} ${first}`,
+          `C ${center+swing*1.4} ${first-loop*.65} ${center+swing*1.4} ${first+loop*.65} ${center} ${first+loop*.55}`,
+          `C ${center-swing*1.4} ${first+loop*.65} ${center-swing*1.4} ${first-loop*.65} ${center} ${first}`,
+          `C ${center-swing} ${first+span*.1} ${center+swing} ${second-loop} ${center} ${second}`,
+          `C ${center-swing*1.4} ${second-loop*.65} ${center-swing*1.4} ${second+loop*.65} ${center} ${second+loop*.55}`,
+          `C ${center+swing*1.4} ${second+loop*.65} ${center+swing*1.4} ${second-loop*.65} ${center} ${second}`,
+          `C ${center+swing} ${second+span*.12} ${center-swing} ${finish-span*.1} ${center} ${finish}`
+        ].join(' ');
+        path.setAttribute('d', d);
+        mask.setAttribute('d', d);
+        pathLength = path.getTotalLength();
+        draw();
+      }
+
+      function draw() {
+        const distance = current * pathLength;
+        const point = path.getPointAtLength(distance);
+        const before = path.getPointAtLength(Math.max(0, distance - 10));
+        const after = path.getPointAtLength(Math.min(pathLength, distance + 10));
+        const tilt = Math.max(-22, Math.min(22, (after.x - before.x) * 1.4));
+        bee.style.transform = `translate3d(${point.x - bee.offsetWidth/2}px, ${point.y - bee.offsetHeight/2}px, 0) rotate(${tilt}deg)`;
+        mask.setAttribute('stroke-dasharray', `${distance} ${pathLength + 10}`);
+      }
+
+      function update() {
+        current += (target - current) * .22;
+        if (Math.abs(target - current) < .0005) current = target;
+        draw();
+        if (current !== target) requestAnimationFrame(update);
+        else animating = false;
+      }
+
+      function onScroll() {
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        target = scrollable > 0 ? Math.max(0, Math.min(1, window.scrollY / scrollable)) : 0;
+        if (!animating) {
+          animating = true;
+          requestAnimationFrame(update);
+        }
+      }
+
+      makePath();
+      current = target = Math.max(0, Math.min(1, window.scrollY / Math.max(1, document.documentElement.scrollHeight - window.innerHeight)));
+      draw();
+      window.addEventListener('scroll', onScroll, {passive:true});
+      window.addEventListener('resize', makePath, {passive:true});
+      document.fonts?.ready.then(makePath);
+      if ('ResizeObserver' in window) new ResizeObserver(makePath).observe(document.querySelector('main'));
+    })();
+  </script>
 </body>
 </html>
