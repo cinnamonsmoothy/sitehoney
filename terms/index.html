@@ -170,40 +170,34 @@
         const finish = height - 42;
         const span = finish - start;
         const y = fraction => start + span * fraction;
-        // Uneven, generous loops joined by a continuous spline: no repeated
-        // swirl template or abrupt changes of direction at segment boundaries.
-        const loop = Math.min(usable * .95, span * .095);
-        const points = [
-          [x(.68), start],
-          [x(.16), y(.08)],
-          [x(.42), y(.17)],
-          [x(.89), y(.26)],
-          [x(.54), y(.26) + loop],
-          [x(.06), y(.26) + loop * .45],
-          [x(.22), y(.26) - loop * .55],
-          [x(.83), y(.26) - loop * .24],
-          [x(.70), y(.39)],
-          [x(.12), y(.49)],
-          [x(.34), y(.58)],
-          [x(.92), y(.65)],
-          [x(.71), y(.65) - loop * .72],
-          [x(.10), y(.65) - loop * .40],
-          [x(.19), y(.65) + loop * .64],
-          [x(.81), y(.76)],
-          [x(.61), y(.87)],
-          [x(.12), y(.94)],
-          [x(.65), finish]
-        ];
-        const segments = [`M ${points[0].join(' ')}`];
-        for (let i = 0; i < points.length - 1; i++) {
-          const previous = points[Math.max(0, i - 1)];
-          const from = points[i];
-          const to = points[i + 1];
-          const next = points[Math.min(points.length - 1, i + 2)];
-          const c1 = from.map((value, axis) => value + (to[axis] - previous[axis]) / 6);
-          const c2 = to.map((value, axis) => value - (next[axis] - from[axis]) / 6);
-          segments.push(`C ${c1.join(' ')} ${c2.join(' ')} ${to.join(' ')}`);
+        // Equal-radius SVG arcs keep the loops circular in screen pixels.
+        // Enter and leave slightly apart to avoid retracing the dotted trail.
+        const segments = [`M ${x(.68)} ${start}`];
+        let cursor = {x:x(.68), y:start};
+        let tangent = {x:0, y:1};
+        function connect(point, direction) {
+          const reach = Math.min(span * .065, Math.hypot(point.x - cursor.x, point.y - cursor.y) * .36);
+          segments.push(`C ${cursor.x + tangent.x * reach} ${cursor.y + tangent.y * reach} ${point.x - direction.x * reach} ${point.y - direction.y * reach} ${point.x} ${point.y}`);
+          cursor = point;
+          tangent = direction;
         }
+        function circle(cx, cy, radius, angle, direction) {
+          const at = a => ({x:cx + radius * Math.cos(a), y:cy + radius * Math.sin(a)});
+          const along = a => ({x:-Math.sin(a) * direction, y:Math.cos(a) * direction});
+          connect(at(angle), along(angle));
+          // A 330-degree loop has a clean opening for the onward flight.
+          for (let step = 1; step <= 2; step++) {
+            const nextAngle = angle + direction * (Math.PI * 11 / 6) * step / 2;
+            cursor = at(nextAngle);
+            tangent = along(nextAngle);
+            segments.push(`A ${radius} ${radius} 0 0 ${direction > 0 ? 1 : 0} ${cursor.x} ${cursor.y}`);
+          }
+        }
+        circle(x(.50), y(.29), usable * .46, Math.PI, -1);
+        connect({x:x(.48), y:y(.48)}, {x:.55, y:.835});
+        circle(x(.53), y(.67), usable * .39, 0, 1);
+        connect({x:x(.20), y:y(.87)}, {x:-.35, y:.937});
+        connect({x:x(.65), y:finish}, {x:.4, y:.9165});
         const d = segments.join(' ');
         path.setAttribute('d', d);
         mask.setAttribute('d', d);
