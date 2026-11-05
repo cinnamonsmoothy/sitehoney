@@ -1,0 +1,14 @@
+.honey-loader{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;background:#fff8e6;color:#201c13;transform:translateY(0);transition:transform .85s cubic-bezier(.76,0,.24,1);font-family:'Plus Jakarta Sans',sans-serif;touch-action:none}
+.honey-loader.is-leaving{transform:translateY(-100%);pointer-events:none}
+.honey-loader[hidden]{display:none}
+.honey-loader-content{text-align:center;padding:24px}
+.honey-loader-flight{width:240px;height:150px;position:relative;margin:0 auto 24px}
+.honey-loader-trail{position:absolute;inset:0;width:100%;height:100%;fill:none;stroke:#bba36a;stroke-width:1.5;stroke-dasharray:1 7;stroke-linecap:round}
+.honey-loader-bee{position:absolute;left:0;top:0;width:36px;height:29.25px;color:#201c13;overflow:visible;will-change:transform}
+.honey-loader .bee-wing{animation:none!important;transform:none!important;transform-origin:initial!important}
+.honey-loader-copy{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:0;color:#796b4b}
+.honey-loader-dots{display:flex;justify-content:center;gap:7px;margin-top:22px}
+.honey-loader-dots i{width:6px;height:6px;background:#d6a724;border-radius:50%;animation:honey-dot 1s ease-in-out infinite}
+.honey-loader-dots i:nth-child(2){animation-delay:.15s}.honey-loader-dots i:nth-child(3){animation-delay:.3s}
+@keyframes honey-dot{50%{transform:translateY(-6px)}}
+@media(prefers-reduced-motion:reduce){.honey-loader{transition-duration:.01s}.honey-loader-dots i{animation:none}}

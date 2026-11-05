@@ -35,16 +35,18 @@
     .agreement{border-top:1px solid var(--line);padding-top:28px;font-weight:700}
     footer{background:#17140f;color:#fffdf6;padding:26px 24px;text-align:center;font-size:13px}
     footer a{color:inherit;text-underline-offset:3px}
-    .terms-flight{position:absolute;top:0;bottom:0;left:calc(100% + 12px);width:clamp(46px,calc(50vw - 412px),180px);pointer-events:none;overflow:visible}
+    .terms-flight{position:absolute;top:0;bottom:0;left:calc(100% + 36px);width:clamp(46px,calc(50vw - 416px),240px);pointer-events:none;overflow:visible}
     .terms-flight-track{display:block;width:100%;height:100%;overflow:visible}
     .terms-flight-trail{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-dasharray:1 10;opacity:.48}
     .terms-bee{position:absolute;top:0;left:0;width:40px;height:33px;color:var(--ink);overflow:visible;will-change:transform}
-    @media(max-width:900px){main{width:min(760px,calc(100% - 96px));margin-left:24px;margin-right:72px}.terms-flight{left:calc(100% + 5px);width:46px}.terms-bee{width:32px;height:26px}}
+    @media(max-width:920px){.terms-flight{left:calc(100% + 24px);width:46px}.terms-bee{width:32px;height:26px}}
+    @media(max-width:888px){main{width:min(760px,calc(100% - 120px));margin-left:24px;margin-right:96px}.terms-flight{width:64px}}
     @media(max-width:600px){.site-header{padding:18px 24px}.site-header img{width:160px}main{padding:48px 0 72px}section{padding:24px 0 22px}}
     @media(prefers-reduced-motion:reduce){.terms-flight{display:none}}
   </style>
-</head>
+<link rel="stylesheet" href="../assets/page-loader.css"></head>
 <body>
+<script src="../assets/page-loader.js"></script>
   <header class="site-header"><a href="/" aria-label="SiteHoney home"><img src="../assets/logo/sitehoney-wordmark.svg" alt="SiteHoney"></a></header>
   <main>
     <div class="terms-flight" aria-hidden="true">
@@ -148,6 +150,7 @@
       const path = document.getElementById('terms-flight-path');
       const mask = document.getElementById('terms-trail-mask');
       const bee = document.querySelector('.terms-bee');
+      const heading = document.querySelector('h1');
       let pathLength = 0;
       let beeWidth = 0;
       let beeHeight = 0;
@@ -158,29 +161,53 @@
       function makePath() {
         const width = flight.clientWidth;
         const height = flight.clientHeight;
-        const center = width / 2;
-        const swing = Math.min(width * .28, 42);
-        const start = 45;
+        beeWidth = parseFloat(getComputedStyle(bee).width);
+        beeHeight = parseFloat(getComputedStyle(bee).height);
+        const edge = beeWidth / 2 + 3;
+        const usable = Math.max(0, width - edge * 2);
+        const x = fraction => edge + usable * fraction;
+        const start = heading.getBoundingClientRect().top - flight.getBoundingClientRect().top + beeHeight / 2;
         const finish = height - 42;
         const span = finish - start;
-        const first = start + span * .27;
-        const second = start + span * .66;
-        const loop = Math.min(68, Math.max(26, span * .055));
-        const d = [
-          `M ${center} ${start}`,
-          `C ${center-swing} ${start+span*.08} ${center+swing} ${first-loop} ${center} ${first}`,
-          `C ${center+swing*1.4} ${first-loop*.65} ${center+swing*1.4} ${first+loop*.65} ${center} ${first+loop*.55}`,
-          `C ${center-swing*1.4} ${first+loop*.65} ${center-swing*1.4} ${first-loop*.65} ${center} ${first}`,
-          `C ${center-swing} ${first+span*.1} ${center+swing} ${second-loop} ${center} ${second}`,
-          `C ${center-swing*1.4} ${second-loop*.65} ${center-swing*1.4} ${second+loop*.65} ${center} ${second+loop*.55}`,
-          `C ${center+swing*1.4} ${second+loop*.65} ${center+swing*1.4} ${second-loop*.65} ${center} ${second}`,
-          `C ${center+swing} ${second+span*.12} ${center-swing} ${finish-span*.1} ${center} ${finish}`
-        ].join(' ');
+        const y = fraction => start + span * fraction;
+        // Uneven, generous loops joined by a continuous spline: no repeated
+        // swirl template or abrupt changes of direction at segment boundaries.
+        const loop = Math.min(usable * .95, span * .095);
+        const points = [
+          [x(.68), start],
+          [x(.16), y(.08)],
+          [x(.42), y(.17)],
+          [x(.89), y(.26)],
+          [x(.54), y(.26) + loop],
+          [x(.06), y(.26) + loop * .45],
+          [x(.22), y(.26) - loop * .55],
+          [x(.83), y(.26) - loop * .24],
+          [x(.70), y(.39)],
+          [x(.12), y(.49)],
+          [x(.34), y(.58)],
+          [x(.92), y(.65)],
+          [x(.71), y(.65) - loop * .72],
+          [x(.10), y(.65) - loop * .40],
+          [x(.19), y(.65) + loop * .64],
+          [x(.81), y(.76)],
+          [x(.61), y(.87)],
+          [x(.12), y(.94)],
+          [x(.65), finish]
+        ];
+        const segments = [`M ${points[0].join(' ')}`];
+        for (let i = 0; i < points.length - 1; i++) {
+          const previous = points[Math.max(0, i - 1)];
+          const from = points[i];
+          const to = points[i + 1];
+          const next = points[Math.min(points.length - 1, i + 2)];
+          const c1 = from.map((value, axis) => value + (to[axis] - previous[axis]) / 6);
+          const c2 = to.map((value, axis) => value - (next[axis] - from[axis]) / 6);
+          segments.push(`C ${c1.join(' ')} ${c2.join(' ')} ${to.join(' ')}`);
+        }
+        const d = segments.join(' ');
         path.setAttribute('d', d);
         mask.setAttribute('d', d);
         pathLength = path.getTotalLength();
-        beeWidth = parseFloat(getComputedStyle(bee).width);
-        beeHeight = parseFloat(getComputedStyle(bee).height);
         draw();
       }
 
@@ -189,19 +216,22 @@
         const point = path.getPointAtLength(distance);
         const before = path.getPointAtLength(Math.max(0, distance - 10));
         const after = path.getPointAtLength(Math.min(pathLength, distance + 10));
-        const tilt = Math.max(-22, Math.min(22, (after.x - before.x) * 1.4));
+        const tilt = Math.atan2(after.x - before.x, Math.abs(after.y - before.y)) * 180 / Math.PI * .45;
         bee.style.left = `${point.x - beeWidth/2}px`;
         bee.style.top = `${point.y - beeHeight/2}px`;
         bee.style.transform = `rotate(${tilt}deg)`;
         mask.setAttribute('stroke-dasharray', `${distance} ${pathLength + 10}`);
       }
 
-      function update() {
-        current += (target - current) * .22;
+      let lastFrame = 0;
+      function update(now) {
+        const elapsed = lastFrame ? Math.min(64, now - lastFrame) : 16.67;
+        lastFrame = now;
+        current += (target - current) * (1 - Math.exp(-elapsed / 130));
         if (Math.abs(target - current) < .0005) current = target;
         draw();
         if (current !== target) requestAnimationFrame(update);
-        else animating = false;
+        else { animating = false; lastFrame = 0; }
       }
 
       function onScroll() {
