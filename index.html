@@ -306,14 +306,14 @@
 .section h3,.process-step h3{letter-spacing:-.015em}
 .feature h3{font-size:17px}
 .process-step h3{font-size:15.5px}
-#included .section-head{text-align:center;max-width:770px;margin:0 auto 60px}
-#included .section-head h2{margin-bottom:19px}
-#included .section-head p{max-width:620px;margin:0 auto}
+:is(#included,#extra-services) .section-head{text-align:center;max-width:770px;margin:0 auto 60px}
+:is(#included,#extra-services) .section-head h2{margin-bottom:19px}
+:is(#included,#extra-services) .section-head p{max-width:620px;margin:0 auto}
 @media(max-width:800px){
  .intro-section .intro h2{font-size:clamp(30px,5.75vw,45px)}
  .process-heading h2{font-size:clamp(28px,5.7vw,38px)}
  .process-flyer{width:29px;height:25px}
- #included .section-head{margin-bottom:40px}
+ :is(#included,#extra-services) .section-head{margin-bottom:40px}
 }
 @media(max-width:420px){
  .intro-section .intro h2{font-size:clamp(29px,7vw,36px)}
@@ -691,8 +691,8 @@ footer{background:var(--ink)}
 /* High-contrast outlined tiles with a crisp, solid offset shadow. */
 .process-number{border:2px solid var(--ink)!important;box-shadow:5px 5px 0 var(--ink)!important}
 .process-step.is-passed .process-number{box-shadow:5px 5px 0 var(--ink)!important}
-#included .feature .symbol{border:1.75px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
-#included .feature .symbol svg{display:block;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+:is(#included,#extra-services) .feature .symbol{border:1.75px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+:is(#included,#extra-services) .feature .symbol svg{display:block;width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 /* Dedicated footer with a floating final CTA exactly across the section boundary. */
 .site-footer{position:relative;background:var(--ink);color:var(--cream);margin-top:170px;padding:0 0 30px;overflow:visible}
 .site-footer .footer-wrap{width:min(1340px,calc(100% - 100px));display:block}
@@ -1115,12 +1115,12 @@ footer{background:var(--ink)}
   .process-timeline{height:auto;display:flex;gap:24px}
 }
 /* Individual feature cards: clear separation, rounded edges and solid ink shadows. */
-#included .features{
+:is(#included,#extra-services) .features{
   grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
   gap:clamp(20px,2vw,28px);
   border:0;
 }
-#included .feature{
+:is(#included,#extra-services) .feature{
   display:flex;
   flex-direction:column;
   min-height:255px;
@@ -1131,7 +1131,7 @@ footer{background:var(--ink)}
   box-shadow:8px 8px 0 var(--ink);
   transition:opacity .75s ease,transform .22s ease,box-shadow .22s ease;
 }
-#included .feature .symbol{
+:is(#included,#extra-services) .feature .symbol{
   width:56px;height:56px;flex:none;
   margin-bottom:30px;
   background:var(--yellow);
@@ -1139,13 +1139,13 @@ footer{background:var(--ink)}
   border-radius:16px;
   box-shadow:4px 4px 0 var(--ink);
 }
-#included .feature h3{font-size:clamp(18px,1.25vw,21px);line-height:1.25;letter-spacing:-.04em;margin-bottom:11px}
-#included .feature p{font-size:clamp(13px,.9vw,14px);line-height:1.6}
+:is(#included,#extra-services) .feature h3{font-size:clamp(18px,1.25vw,21px);line-height:1.25;letter-spacing:-.04em;margin-bottom:11px}
+:is(#included,#extra-services) .feature p{font-size:clamp(13px,.9vw,14px);line-height:1.6}
 @media(hover:hover){
-  #included .feature:hover{transform:translate(4px,4px);box-shadow:4px 4px 0 var(--ink)}
+  :is(#included,#extra-services) .feature:hover{transform:translate(4px,4px);box-shadow:4px 4px 0 var(--ink)}
 }
-@media(prefers-reduced-motion:reduce){#included .feature{transition:none}}
-@media(max-width:600px){#included .feature{min-height:220px;padding:28px 25px 30px}#included .feature .symbol{margin-bottom:27px}}
+@media(prefers-reduced-motion:reduce){:is(#included,#extra-services) .feature{transition:none}}
+@media(max-width:600px){:is(#included,#extra-services) .feature{min-height:220px;padding:28px 25px 30px}:is(#included,#extra-services) .feature .symbol{margin-bottom:27px}}
 /* Keep the header CTA's original color hover, without an underline or shadow. */
 .navlinks .pill,.navlinks .pill:hover{box-shadow:none}
 .navlinks .pill:hover{text-decoration:none}
@@ -1168,6 +1168,47 @@ footer{background:var(--ink)}
 .faq details[open] summary::after{background:linear-gradient(var(--ink),var(--ink)) center/18px 2.5px no-repeat}
 .footer-bottom a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .footer-bottom a:hover,.footer-bottom a:focus-visible{color:var(--yellow)}
+/* Larger hero headline with room for each complete line. */
+.hero .hero-headline-hours::after,.hero h1 em::after{display:none!important}
+@media(min-width:801px){
+  .hero-inner{width:min(1600px,calc(100% - 72px));grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,3vw,64px)}
+  .hero-copy{max-width:none}
+  .hero h1{font-size:clamp(88px,8.2vw,156px);line-height:1.04}
+}
+@media(max-width:800px){
+  .hero h1{font-size:clamp(72px,23vw,120px);line-height:1.02}
+}
+/* Align the header container with the hero at every breakpoint. */
+@media(min-width:801px){
+  .nav .nav-inner,.nav.is-scrolled .nav-inner{width:min(1600px,calc(100% - 72px))}
+}
+@media(max-width:800px){
+  .nav .nav-inner,.nav.is-scrolled .nav-inner{width:min(100% - 40px,560px)}
+}
+/* Give the hero preview, supporting copy and primary action more presence. */
+.hero .hero-desc{width:100%;max-width:none;font-size:clamp(16px,1.15vw,19px);line-height:1.75}
+.hero-actions .hero-cta{min-height:68px;padding:20px 34px;font-size:16px;gap:12px}
+.hero-actions .hero-cta-icon{width:23px;height:23px;flex-basis:23px}
+@media(min-width:801px){
+  .hero .hive-stage{width:100%;max-width:none;max-height:none}
+}
+@media(max-width:800px){
+  .hero .hive-stage{width:100%;max-width:none}
+  .hero-actions .hero-cta{min-height:64px;padding:18px 24px;font-size:16px}
+  .hero .hero-desc{font-size:16px}
+}
+@media(max-width:380px){
+  .hero-actions .hero-cta{padding-inline:18px;font-size:15px;gap:9px}
+}
+/* Larger preview and a wider hero action. */
+.hero-actions .hero-cta{padding-inline:52px;min-width:min(100%,390px)}
+@media(min-width:801px){
+  .hero-inner{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,2.4vw,48px)}
+}
+@media(max-width:800px){
+  .hero .hive-stage{width:calc(100% + 16px);max-width:none}
+  .hero-actions .hero-cta{width:100%;min-width:0;padding-inline:28px}
+}
 </style><link rel="stylesheet" href="assets/page-loader.css"></head><body>
 <script src="assets/page-loader.js"></script>
 <svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true" focusable="false">
@@ -1191,7 +1232,7 @@ footer{background:var(--ink)}
     </div>
     <div class="hive-stage" id="hive-stage" aria-label="Animated preview of bees building a website">
       <div class="web-window" id="web-window">
-        <div class="window-chrome"><div class="window-dots"><i></i><i></i><i></i></div><div class="window-address">yournewwebsite.co.uk</div><span class="window-chevron"><svg class="ui-arrow" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"/></svg></span></div>
+        <div class="window-chrome"><div class="window-dots"><i></i><i></i><i></i></div><div class="window-address">yournewwebsite.co.uk</div></div>
         <div class="demo-reel" id="demo-reel" aria-hidden="true">
           <div class="site-demo" data-demo-slot="0"></div>
           <div class="site-demo" data-demo-slot="1"></div>
@@ -1379,7 +1420,7 @@ footer{background:var(--ink)}
       C 1301 55, 1350 51, 1440 54
       V100 H0 Z"/>
   </svg>
-<div class="wrap price-layout"><div class="reveal"><h2>Yes.<br>It's really that cheap.</h2></div><div class="price-card reveal"><div class="price-head"><div class="price">£99</div><span class="price-one-off">one-off</span></div><div class="price-description" style="font-size:13px;color:var(--muted)">Professional website design & build</div><ul><li>Customised, professional design</li><li>Mobile-friendly on every device</li><li>Essential business pages</li><li>Two rounds of revisions</li><li>Domain connection and launch support</li></ul><a class="pill" href="https://wa.me/447544821621?text=Hi%20SiteHoney%2C%20I%27m%20interested%20in%20getting%20a%20website%20built%20for%20my%20business.%20Can%20we%20have%20a%20quick%205-minute%20call%20to%20discuss%20it%3F" target="_blank" rel="noopener noreferrer">Let's build your website</a><p class="hosting-note">Hosting and maintenance: £19/month, billed separately. Cancel anytime.</p></div></div>
+<div class="wrap price-layout"><div class="reveal"><h2>Yes.<br>It's really that sweet.</h2></div><div class="price-card reveal"><div class="price-head"><div class="price">£99</div><span class="price-one-off">one-off</span></div><div class="price-description" style="font-size:13px;color:var(--muted)">Professional website design & build</div><ul><li>Customised, professional design</li><li>Mobile-friendly on every device</li><li>Essential business pages</li><li>Two rounds of revisions</li><li>Domain connection and launch support</li></ul><a class="pill" href="https://wa.me/447544821621?text=Hi%20SiteHoney%2C%20I%27m%20interested%20in%20getting%20a%20website%20built%20for%20my%20business.%20Can%20we%20have%20a%20quick%205-minute%20call%20to%20discuss%20it%3F" target="_blank" rel="noopener noreferrer">Let's build your website</a><p class="hosting-note">Hosting and maintenance: £19/month, billed separately. Cancel anytime.</p></div></div>
   <svg class="pricing-honey-bottom pricing-honey-desktop" viewBox="0 0 1440 230" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <path fill="#ffd23f" d="M0 0 H1440 V83
       C1434 87 1437 168 1425 174
@@ -1478,6 +1519,19 @@ footer{background:var(--ink)}
       C28 100 34 145 29 168
       C25 191 8 190 0 182 Z"/>
   </svg>
+</section>
+<section class="section" id="extra-services" aria-labelledby="extra-services-heading">
+  <div class="wrap">
+    <div class="section-head reveal"><h2 id="extra-services-heading">A few more ways we can help.</h2><p>Go beyond your website with optional extras to help your business look the part, get found and serve your customers.</p></div>
+    <div class="features">
+      <div class="feature"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div><h3>Google Business Profile</h3><p>Help local customers find you with a Google Business Profile set up around your business.</p></div>
+      <div class="feature"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 3 8 5-8 5-8-5 8-5ZM4 12l8 5 8-5M4 16l8 5 8-5"/></svg></div><h3>Logo &amp; Brand Design</h3><p>A distinctive logo, colours and visual style that give your business a consistent look.</p></div>
+      <div class="feature"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6M7 12l3-4 3 2"/></svg></div><h3>SEO</h3><p>Search-friendly content and on-page improvements to help customers discover your website.</p></div>
+      <div class="feature"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div><h3>Work Email Setup</h3><p>Professional email addresses using your own domain, with setup support to get you connected.</p></div>
+      <div class="feature"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 3v4M9 3h6M1 12v4M23 12v4M9 16h6"/><circle cx="8" cy="12" r=".8"/><circle cx="16" cy="12" r=".8"/></svg></div><h3>AI Chatbots</h3><p>Give visitors a helpful first point of contact for common questions and new enquiries.</p></div>
+      <div class="feature"><div class="symbol" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4m5 0h3"/></svg></div><h3>Payment Integration</h3><p>Stripe setup and payment integration so customers can pay through your website.</p></div>
+    </div>
+  </div>
 </section>
 <section class="section"><div class="wrap faq"><h2>Frequently Asked Questions</h2><details name="sitehoney-faq"><summary>Can you really build my website in 24 hours?</summary><p>That's our target for standard business websites once we've received your content and brief. More complex projects or additional changes may take longer, and we'll tell you upfront.</p></details><details name="sitehoney-faq"><summary>Why is the website only £99?</summary><p>Building websites helps us form long-term relationships with companies. Some clients choose to use other services from us later, so we’re happy to keep our websites affordable. There’s no obligation to buy anything else.</p></details><details name="sitehoney-faq"><summary>What if I want changes to my website later?</summary><p>We take care of your hosting and all the technical bits that come with it. Your £19/month hosting and maintenance includes one hour of development time each month for changes. Just tell us what you need — we’re your website guy now.</p></details><details name="sitehoney-faq"><summary>Can I use a domain I already own?</summary><p>Absolutely. We can help connect your existing domain when your website is ready.</p></details><details name="sitehoney-faq"><summary>Will my website work on mobile?</summary><p>Yes. Every website is designed to look and work beautifully across mobile, tablet and desktop screens.</p></details><details name="sitehoney-faq"><summary>Can you match my existing branding?</summary><p>Of course. We'll work with your logo, colours and business identity, or help establish a simple visual direction if you're starting fresh.</p></details></div></section>
 </main>
@@ -1775,7 +1829,7 @@ const dots=Array.from({length:dotCount},(_,i)=>{
   timelineDots.append(node);
   return node;
 });
-let pathLength=0,flightTickPending=false;
+let pathLength=0,flightTickPending=false,storyCurrent=0,storyFrameTime=0;
 function layoutStoryBee(){
   const bounds=processTimeline.getBoundingClientRect();
   const w=bounds.width,h=bounds.height;
@@ -1793,25 +1847,40 @@ function layoutStoryBee(){
     timelineLine.style.height=(centres[centres.length-1]-centres[0])+'px';
     timelineLine.style.bottom='auto';
   }
-  // A continuous, gently winding bee flight following all four steps.
-  // The curves stay in the left-hand corridor, away from the copy.
+  // Match the terms page's rounded loops and tangent-aligned joins.
   const mobile=innerWidth<800;
-  const left=mobile?9:14;
-  const right=mobile?48:84;
-  let path=`M ${mobile?23:36} ${centres[0]}`;
-  let previousY=centres[0];
-  for(let i=0;i<centres.length;i++){
-    const targetY=centres[i]+(i===centres.length-1?40:22);
-    const delta=targetY-previousY;
-    const nextX=i%2===0?right:left+8;
-    const midX=i%2===0?left:right;
-    path+=` C ${midX} ${previousY+delta*.26}, ${nextX} ${previousY+delta*.68}, ${nextX} ${targetY}`;
-    previousY=targetY;
+  const left=mobile?9:14, right=mobile?48:84;
+  const usable=right-left;
+  const x=fraction=>left+usable*fraction;
+  const start=centres[0], finish=centres[centres.length-1]+40;
+  const span=finish-start, y=fraction=>start+span*fraction;
+  const segments=[`M ${x(.68)} ${start}`];
+  let cursor={x:x(.68),y:start}, tangent={x:0,y:1};
+  function connect(point,direction){
+    const reach=Math.min(span*.065,Math.hypot(point.x-cursor.x,point.y-cursor.y)*.36);
+    segments.push(`C ${cursor.x+tangent.x*reach} ${cursor.y+tangent.y*reach} ${point.x-direction.x*reach} ${point.y-direction.y*reach} ${point.x} ${point.y}`);
+    cursor=point; tangent=direction;
   }
+  function circle(cx,cy,radius,angle,direction){
+    const at=a=>({x:cx+radius*Math.cos(a),y:cy+radius*Math.sin(a)});
+    const along=a=>({x:-Math.sin(a)*direction,y:Math.cos(a)*direction});
+    connect(at(angle),along(angle));
+    for(let step=1;step<=2;step++){
+      const nextAngle=angle+direction*(Math.PI*11/6)*step/2;
+      cursor=at(nextAngle); tangent=along(nextAngle);
+      segments.push(`A ${radius} ${radius} 0 0 ${direction>0?1:0} ${cursor.x} ${cursor.y}`);
+    }
+  }
+  circle(x(.50),y(.29),usable*.46,Math.PI,-1);
+  connect({x:x(.48),y:y(.48)},{x:.55,y:.835});
+  circle(x(.53),y(.67),usable*.39,0,1);
+  connect({x:x(.20),y:y(.87)},{x:-.35,y:.937});
+  connect({x:x(.65),y:finish},{x:.4,y:.9165});
+  const path=segments.join(' ');
   timelinePath.setAttribute('d',path);
   pathLength=timelinePath.getTotalLength();
 }
-function updateStory(){
+function updateStory(now=performance.now()){
   flightTickPending=false;
   const bounds=processSection.getBoundingClientRect();
   const travel=processSection.offsetHeight-innerHeight;
@@ -1827,10 +1896,15 @@ function updateStory(){
   if(reduceMotion||!pathLength){timelineFlyer.style.opacity='0';return;}
   const show=bounds.top<innerHeight*.85&&bounds.bottom>innerHeight*.18;
   timelineFlyer.style.opacity=show?'1':'0';
-  if(!show){dots.forEach(dot=>dot.style.opacity='0');return;}
+  if(!show){dots.forEach(dot=>dot.style.opacity='0');storyFrameTime=0;return;}
   // Stretch the flight over the entire sticky scroll, finishing near the exit.
-  const t=clamp((p-.015)/.90,0,1);
-  const distance=t*pathLength;
+  const target=clamp((p-.015)/.90,0,1);
+  const elapsed=storyFrameTime?Math.min(64,now-storyFrameTime):16.67;
+  storyFrameTime=now;
+  storyCurrent+=(target-storyCurrent)*(1-Math.exp(-elapsed/130));
+  if(Math.abs(target-storyCurrent)<.0005){storyCurrent=target;storyFrameTime=0;}
+  else queueStory();
+  const distance=storyCurrent*pathLength;
   const pt=timelinePath.getPointAtLength(distance);
   const a=timelinePath.getPointAtLength(Math.max(0,distance-9));
   const b=timelinePath.getPointAtLength(Math.min(pathLength,distance+9));
@@ -1937,4 +2011,5 @@ faqItems.forEach(item=>item.addEventListener('toggle',()=>{
   if(item.open) faqItems.forEach(other=>{if(other!==item) other.open=false});
 }));
 </script>
+
 </body></html>
